@@ -1,0 +1,15 @@
+export default {
+    'user.popover.username.label':'用户名',
+    'user.popover.nickname.label':'昵称',
+    'user.popover.email.label':'E-mail',
+    'user.popover.dept.label':'部门',
+    'user.popover.post.label':'岗位',
+    'user.popover.usertype.label':'用户类型',
+    'user.popover.role.label':'角色',
+    'user.popover.createdate.label':'创建时间',
+    'user.popover.modifydate.label':'修改时间',   
+    'switch.result.title':'这是一个切换不同路由布局的效果页',
+    'switch.result.description':'一个项目里可以支持不同的路由配置不同的布局效果，每一个路由可以独立配置效果展示，同时还可以体现拆分菜单时左侧菜单为空的效果。',
+    'switch.result.tooltip.main':'试试跳到 /main 路由',
+    'switch.result.tooltip.company':'试试跳到 /company 路由',
+};
