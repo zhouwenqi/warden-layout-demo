@@ -1,9 +1,9 @@
 import { Spin } from "antd"
 
-const LoadPage=()=>{
+const Loading=()=>{
     return(
-    <Spin delay={500} fullscreen />
-    )
+        <Spin delay={500} fullscreen />
+        )
 }
 
-export default LoadPage
+export default Loading

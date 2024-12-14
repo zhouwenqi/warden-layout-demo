@@ -1,8 +1,19 @@
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
+import {
+    TooltipComponent,
+    GridComponent,
+  } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { useEffect,useImperativeHandle,useRef,forwardRef,Ref, MutableRefObject } from 'react';
-
+echarts.use([
+    LineChart,
+    GridComponent,
+    TooltipComponent,
+    CanvasRenderer
+  ]);
 const AppChart=(props:AppChartProps,ref:Ref<any>)=>{
+
     const echartsRef:MutableRefObject<any> = useRef()
     let myChart:any
     useEffect(()=>{

@@ -8341,7 +8341,7 @@ typescript@^5.0.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.2.tgz#3169cf8c4c8a828cde53ba9ecb3d2b1d5dd67be6"
   integrity sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==
 
-umi@^4.3.36:
+umi@^4.3.6:
   version "4.3.36"
   resolved "https://registry.yarnpkg.com/umi/-/umi-4.3.36.tgz#50eae05e17024f76e7439ebdc50e4c5e87d876ad"
   integrity sha512-+bEwopCq6hU5Cnf9OIJrp+jZVzscPGjVlPO+CSYK/uWkvXA8a4HIf9xKYHGtAHElWjsRKmMCUpBHISNxb2jORw==
@@ -8519,10 +8519,10 @@ walker@^1.0.8:
   dependencies:
     makeerror "1.0.12"
 
-warden-layout@^1.3.9:
-  version "1.3.9"
-  resolved "https://registry.yarnpkg.com/warden-layout/-/warden-layout-1.3.9.tgz#424760506bae5177bcca8084eaebf65d7fde56c4"
-  integrity sha512-r4bD9Ekr8xOIS9EoMwvwFKfyDJe9R6Ic59Z4JauESa1gQFrD5xWyKgHBYttrra2vk6MdZq748hfRC22IH6TZJA==
+warden-layout@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/warden-layout/-/warden-layout-1.4.1.tgz#d91f66d6a6d98319ecbc15e977236689ec4866a2"
+  integrity sha512-NKSmt3wqB4fWcvHKqmAJv6eUmxqG184Ai21Qg7gvVedfYL3uDOobscpySzxwA5Mkb5g8O69XpoCwdTUM3y81Rg==
   dependencies:
     "@ant-design/colors" "^7.1.0"
     "@ant-design/icons" "^5.3.7"
@@ -8531,7 +8531,7 @@ warden-layout@^1.3.9:
     copy-to-clipboard "^3.3.3"
     react-intl "^3.12.1"
     react-svg "^16.2.0"
-    umi "^4.3.36"
+    umi "^4.3.6"
 
 warning@^3.0.0:
   version "3.0.0"
