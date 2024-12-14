@@ -3,7 +3,7 @@
  * 
  */
 export default [
-    { path: "/", component: "index", name:"Home",  },
+    { path: "/", redirect:"/main", name:"Home",  },
     { path: "/docs", component: "docs", name:"Docs" },
     { path: "/404", component: "404", layout:false},
     { path: "/main", component:"@/layouts/main", name:"Main", routes:[
