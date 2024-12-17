@@ -21,13 +21,15 @@ const ProjectPanel=()=>{
         {id:'5',name:'测试外卖',code:'C324222',color:'#16b7da',icon:'/svg/project/p5.svg',createDate:'2022/12/8 23:22',description:'测试妹子亲手炒的菜并配送...',memberCount:18,speedCount:49,testCount:76}
     ]
 
-   
-    return(
-        <Card bordered={!config.hideBorder} style={{margin:"8px"}} title={intl.formatMessage({id:'workbench.card.projects.title'})} extra={<Button type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>}>
+    const iconSize = config.compact ? "32px" : "40px"
+    const btnPd = config.compact ? "6px 8px" : "8px"
+
+    return(       
+        <Card bordered={!config.hideBorder} style={{margin:"8px"}} title={intl.formatMessage({id:'workbench.card.projects.title'})} extra={<Button type="text" style={{padding:btnPd,margin:"0px"}}><MoreOutlined /></Button>}>
             <List itemLayout="horizontal" dataSource={projectData} renderItem={(item)=>(
             <List.Item actions={[<TeamIcon text={''+item.memberCount} />]}>
               <List.Item.Meta
-              avatar={<img style={{width:"40px",height:"40px"}} src={item.icon} alt={item.name} />}
+              avatar={<img style={{width:iconSize,height:iconSize}} src={item.icon} alt={item.name} />}
               title={<a>{item.name}</a>}
               description={item.description}
               key={item.id}      

@@ -19,6 +19,7 @@ export default ()=> {
         }
         setBadgeCount(newCount)
     };
+
     const random = () => {
         const newCount = Math.floor(Math.random() * 100);
         setBadgeCount(newCount)

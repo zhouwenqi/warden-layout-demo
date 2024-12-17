@@ -16,7 +16,7 @@ import ProjectPanel from './ProjectPanel';
 
 const {useToken} = theme
 
-const App: React.FC = () => {
+const WeblcomePanel: React.FC = () => {
   const {token} = useToken()
   const {config} = useConfigContext()
   const intl = useIntl()
@@ -79,16 +79,16 @@ const App: React.FC = () => {
           xs={24}
           sm={24}
           md={24}
-          lg={18}
-          xl={18}>
+          lg={14}
+          xl={16}>
             <GridPanel />
           </Col>
           <Col 
           xs={24}
           sm={24}
           md={24}
-          lg={6}
-          xl={6}>
+          lg={10}
+          xl={8}>
             <ProjectPanel />
           </Col>
         </Row>
@@ -99,4 +99,4 @@ const App: React.FC = () => {
 
 
 
-export default App;
+export default WeblcomePanel;
