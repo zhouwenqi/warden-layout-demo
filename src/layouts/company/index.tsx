@@ -1,3 +1,4 @@
+import LeftExpandPanel from '@/components/LeftExpandPalel'
 import WardenLayout,{Warden} from 'warden-layout'
 
 /** 自定义布局 - company */    
@@ -22,6 +23,6 @@ export default ()=>{
         "localeEnabled":true
     }
     return(
-        <WardenLayout config={config} />
+        <WardenLayout config={config} leftExpandPanel={<LeftExpandPanel />} />
     )
 }

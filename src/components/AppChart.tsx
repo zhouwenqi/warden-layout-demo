@@ -3,6 +3,7 @@ import { LineChart } from 'echarts/charts';
 import {
     TooltipComponent,
     GridComponent,
+    DatasetComponent,
   } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { useEffect,useImperativeHandle,useRef,forwardRef,Ref, MutableRefObject } from 'react';
@@ -10,6 +11,7 @@ echarts.use([
     LineChart,
     GridComponent,
     TooltipComponent,
+    DatasetComponent,
     CanvasRenderer
   ]);
 const AppChart=(props:AppChartProps,ref:Ref<any>)=>{
