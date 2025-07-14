@@ -47,11 +47,14 @@ return(
                     <li>rootItemMenuGroup<Text code type="secondary">boolean</Text> - 左侧菜单一级分组</li>
                     <li>hideFooter<Text code type="secondary">boolean</Text> - 全局隐藏页脚</li>
                     <li>hideBreadcrumb<Text code type="secondary">boolean</Text> - 全局隐藏面包屑</li>
-                    <li>hideTitleBar<Text code type="secondary">boolean</Text> - 全局隐藏标题栏</li>
-                    <li>localeEnabled<Text code type="secondary">boolean</Text> - 启用国际化(布局)</li>
+                    <li>hideTitleBar<Text code type="secondary">boolean</Text> - 全局隐藏标题栏</li>   
                     <li>brandLogo<Text code type="secondary">string</Text> - 品牌Logo</li>
-                    <li>brandTitle<Text code type="secondary">string</Text> - 品牌标题</li>
-                    <li>logoNavigateRoute<Text code type="secondary">string</Text> - 点击logo导航路由</li>
+                    <li>brandTitle<Text code type="secondary">string</Text> - 品牌标题</li> 
+                    <li>localeEnabled<Text code type="secondary">boolean</Text> - 启用国际化(布局)</li>                    
+                    <li>logoNavigateRoute<Text code type="secondary">string</Text> - 点击logo导航路由</li>   
+                    <li>avatarNavigateRoute<Text code type="secondary">string</Text> - 形象导航路由</li> 
+                    <li>avatarReplaceBrand<Text code type="secondary">boolean</Text> - 形象替换品牌Logo</li>                    
+                    <li>menuIconVariant<Text code type="secondary">boolean | string[]</Text> - 菜单图标启用激活状态</li>                               
                 </ul>
             </Paragraph>
             <Title level={4}>💡提示</Title>
@@ -65,6 +68,7 @@ return(
                     </ol>
                 </blockquote>
             </Paragraph>
+            <Text type="secondary">menuIconVariant启用后图标名称默认后缀会加上<Text code>Filled</Text>和<Text code>Outlined</Text>，或者传下自定义数组<Text code>['line','solid']</Text></Text>
         </Typography>
     )
     const enTypography = (
@@ -100,10 +104,13 @@ return(
                 <li>HideFooter<Text code type="secondary">boolean</Text>- Global hidden footer</li>
                 <li>HideBreadcrumb<Text code type="secondary">boolean</Text>- Global hidden breadcrumbs</li>
                 <li>HideTitleBar<Text code type="secondary">boolean</Text>- Hide the title bar globally</li>
-                <li>LocaleEnable<Text code type="secondary">boolean</Text>- Enable internationalization (layout)</li>
                 <li>BrandLogo<Text code type="secondary">string</Text>- Brand Logo</li>
-                <li>BrandTitle<Text code type="secondary">string</Text>- Brand Title</li>
+                <li>BrandTitle<Text code type="secondary">string</Text>- Brand Title</li>     
+                <li>LocaleEnable<Text code type="secondary">boolean</Text>- Enable internationalization (layout)</li>                    
                 <li>LogoNavigateRoute<Text code type="secondary">string</Text>- Click on the logo to navigate the route</li>
+                <li>avatarNavigateRoute<Text code type="secondary">string</Text> - Click on the avatar navigate the route</li> 
+                <li>avatarReplaceBrand<Text code type="secondary">boolean</Text> - Avatar replacement brand logo</li>                    
+                <li>menuIconVariant<Text code type="secondary">boolean | string[]</Text> - Enable menu icon activation status</li>            
                 </ul>
             </Paragraph>
             <Title level={4}>💡prompt</Title>
@@ -116,6 +123,7 @@ return(
                         <li>After modifying the configuration, execute the hook setConfig to save the configuration information</li>                         
                     </ol>
                 </blockquote>
+            <Text type="secondary">When menuIconVariant is enabled, the default suffix for icon names will be added with<Text code>Filled</Text>and<Text code>Outlined</Text>, or a custom array<Text code>['line ',' solid ']</Text></Text>
             </Paragraph>
         </Typography>
     )

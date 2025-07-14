@@ -46,7 +46,8 @@ return(
                     <li>avatarPopover<Text code type="secondary">JSX.Element</Text>- 用户形象弹出面版</li>
                     <li>logoPopover<Text code type="secondary">JSX.Element</Text>- Logo悬停弹出面版</li>             
                     <li>leftExpandPanel<Text code type="secondary">JSX.Element</Text> - 左侧栏底部扩展面版</li>
-                    <li>screenIcons<Text code type="secondary">JSX.Element[]</Text> - 全屏切换图标</li>
+                    <li>screenIcons<Text code type="secondary">JSX.Element[]</Text> - 全屏切换图标</li>                    
+                    <li>wardenMenuData<Text code type="secondary">IMenuData[] - 菜单数据</Text></li>
                     </ul>
                 </Paragraph>
                 <Paragraph type="secondary">
@@ -74,7 +75,8 @@ return(
                     <li>avatarPopover<Text code type="secondary">JSX.Element</Text>- User information pop-up page</li>
                     <li>logoPopover<Text code type="secondary">JSX.Element</Text>- Logo hover pop-up version</li>             
                     <li>leftExpandPanel<Text code type="secondary">JSX.Element</Text> - Bottom expansion panel on the left side column</li>
-                    <li>screenIcons<Text code type="secondary">JSX.Element[]</Text> - Full screen switching icon</li>
+                    <li>screenIcons<Text code type="secondary">JSX.Element[]</Text> - Full screen switching icon</li>                    
+                    <li>wardenMenuData<Text code type="secondary">IMenuData[] - Menu data</Text></li>
                     </ul>
                 </Paragraph>
                 <Paragraph type="secondary">
