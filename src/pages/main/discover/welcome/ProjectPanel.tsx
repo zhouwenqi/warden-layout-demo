@@ -1,12 +1,15 @@
-import { Button, Card,List } from "antd"
+import { Button, Card,List,theme } from "antd"
 import {MoreOutlined,TeamOutlined} from "@ant-design/icons"
 import {useIntl,getLocale} from "umi"
-import { useConfigContext } from "warden-layout"
+import { hexToRgbaString, useConfigContext } from "warden-layout"
+
+const {useToken} = theme
 
 const ProjectPanel=()=>{
     const {config} = useConfigContext()
     const locale = getLocale()
     const intl = useIntl()
+    const {token} = useToken()
     const projectData = locale == "en-US" ? [
         {id:'1',name:'Calf school',code:'P208823',color:'#ff6600',icon:'/svg/project/p1.svg',createDate:'2022/12/8 23:22',description:'Creating value for corporate customers is the pursuit of the calf academy all along...',memberCount:4,speedCount:86,testCount:19},
         {id:'2',name:'CodeMonkey horde',code:'P442323',color:'#2e78ff',icon:'/svg/project/p2.svg',createDate:'2022/12/8 23:22',description:'Code Monkey horde APP is a real dating software with easy registration...',memberCount:12,speedCount:59,testCount:51},
@@ -24,8 +27,12 @@ const ProjectPanel=()=>{
     const iconSize = config.compact ? "32px" : "40px"
     const btnPd = config.compact ? "6px 8px" : "8px"
 
+    
+    const bgColor = config.headTransparent || config.leftTransparent ? hexToRgbaString(token.colorBgContainer,0.6) : token.colorBgContainer
+    const cardClass = config.backgroundBlur ? "warden-layout-blur" : "" 
+
     return(       
-        <Card bordered={!config.hideBorder} style={{margin:"8px"}} title={intl.formatMessage({id:'workbench.card.projects.title'})} extra={<Button type="text" style={{padding:btnPd,margin:"0px"}}><MoreOutlined /></Button>}>
+        <Card className={cardClass} bordered={!config.hideBorder} style={{margin:"8px",background:bgColor}} title={intl.formatMessage({id:'workbench.card.projects.title'})} extra={<Button type="text" style={{padding:btnPd,margin:"0px"}}><MoreOutlined /></Button>}>
             <List itemLayout="horizontal" dataSource={projectData} renderItem={(item)=>(
             <List.Item actions={[<TeamIcon text={''+item.memberCount} />]}>
               <List.Item.Meta

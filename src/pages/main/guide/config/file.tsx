@@ -32,8 +32,13 @@ return(
                     <li>theme<Text code type="secondary">string</Text> - 明暗模式</li>
                     <li>systemTheme<Text code type="secondary">boolean</Text> - theme是否跟随系统</li>
                     <li>layoutType<Text code type="secondary">LayoutType</Text> - 布局类型</li>
-                    <li>primaryColor<Text code type="secondary">string</Text> - 主题颜色</li>
-                    <li>compact<Text code type="secondary">boolean</Text> - 紧凑模式</li>
+                    <li>primaryColor<Text code type="secondary">string</Text> - 主题颜色</li>   
+                    <li>menuSkin<Text code type="secondary">string</Text> - 主题皮肤</li>
+                    <li>menuTransparent<Text code type="secondary">boolean</Text> - 菜单背景透明</li>
+                    <li>backgroundBlur<Text code type="secondary">boolean</Text> - 菜单背景模糊</li>
+                    <li>containerTransparent<Text code type="secondary">boolean</Text> - 容器组件透明</li>
+                    <li>menuByBackground<Text code type="secondary">boolean</Text> - 容器跟随菜单效果</li>
+                    <li>compact<Text code type="secondary">boolean</Text> - 紧凑模式</li>                    
                     <li>menuByPrimary<Text code type="secondary">boolean</Text> - 隐藏线条</li>
                     <li>menuSplit<Text code type="secondary">boolean</Text> - 分隔菜单</li>
                     <li>leftEmptyHidden<Text code type="secondary">boolean</Text> - 左侧菜单为空隐藏</li>
@@ -78,8 +83,13 @@ return(
                 <ul>
                 <li>Theme<Text code type="secondary">string</Text>- Light and Shadow Mode</li>
                 <li>SystemTheme<Text code type="secondary">boolean</Text>- Does the theme follow the system</li>
-                <li>LayoutType<Text code type="secondary">LayoutType</Text>- Layout Type</li>
-                <li>Primary Color<Text code type="secondary">string</Text>- Theme Color</li>
+                <li>LayoutType<Text code type="secondary">LayoutType</Text>- Layout type</li>
+                <li>Primary Color<Text code type="secondary">string</Text>- Theme color</li>
+                <li>menuSkin<Text code type="secondary">string</Text> - Theme skin</li>
+                <li>menuTransparent<Text code type="secondary">boolean</Text> - Menu background transparent</li>
+                <li>backgroundBlur<Text code type="secondary">boolean</Text> - Menu background blur</li>
+                <li>containerTransparent<Text code type="secondary">boolean</Text> - Container transparent</li>
+                <li>menuByBackground<Text code type="secondary">boolean</Text> - Container follow menu effect</li>
                 <li>Compact<Text code type="secondary">boolean</Text>- Compact mode</li>
                 <li>MenuPrePrimary<Text code type="secondary">boolean</Text>- Hide lines</li>
                 <li>MenuSplit<Text code type="secondary">boolean</Text>- Separate menu</li>
@@ -110,7 +120,7 @@ return(
         </Typography>
     )
     return(
-        <Container mode="Box" hideBreadcrumb={true} hideTitle={true}>
+        <Container mode="box" hideBreadcrumb={true} hideTitle={true}>
             {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
         </Container>
     )

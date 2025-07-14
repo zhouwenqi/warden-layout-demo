@@ -2,7 +2,6 @@ import { Avatar, Button , Divider, Flex, Space, Tag, theme, Popover, Typography 
 import {EditOutlined,EllipsisOutlined,LogoutOutlined} from '@ant-design/icons'
 import {useIntl} from 'umi'
 import { WardenGlobalThis,useConfigContext } from "warden-layout";
-import { Card } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 
 const {useToken} = theme;  
@@ -14,13 +13,32 @@ const {useToken} = theme;
  */
 const CustomToolbarUserPanel = (props:{popover?:JSX.Element})=>{
     const{token} = useToken()  
-    const {config} = useConfigContext()  
-
+    const {config,collapsed} = useConfigContext()
     const user = WardenGlobalThis.currentUser
-    const topDark = config.menuByPrimary && (config.theme == "dark" || config.layoutType == "HeadMenu")
+    const topDark = config.menuByPrimary && (config.theme == "dark" || config.layoutType == "headMenu")
 
-    return(
-        <Popover placement="bottomRight" content={props.popover || <UserPopoverPanel />}>
+    console.log(collapsed)
+
+    const imgSize = collapsed ? 30 : 90
+    let txtStyle = {fontSize:"18px",fontWeight:"500", color:token.colorTextBase}    
+
+    if(config.compact){
+        txtStyle = {...txtStyle, fontSize:"16px"}
+    }
+    
+    // 用户信息面版   
+    let avatarPanel = (
+        <>        
+        <Popover placement="rightTop" content={props.popover || <UserPopoverPanel />}>
+            <Avatar src={user?.headImgUrl} size={imgSize} />
+        </Popover>
+        {collapsed ? <></> : <><label style={txtStyle}>{user?.username}</label><label style={{...txtStyle,fontSize:token.fontSize,fontWeight:"initial",opacity:"0.8"}}>{user?.createDate}</label></>}
+        </>
+    )
+
+    if(!config.avatarReplaceBrand){
+        avatarPanel = (<>
+            <Popover placement="bottomRight" content={props.popover || <UserPopoverPanel />}>
             <div style={{display:"flex",justifyContent:"center",alignItems:"center",marginRight:"10px"}}>
                 <Avatar style={{background:token.colorBgLayout}} src={user?.headImgUrl} >
                     {user?.username}
@@ -28,6 +46,11 @@ const CustomToolbarUserPanel = (props:{popover?:JSX.Element})=>{
                 <label style={{color:topDark ? 'white' : token.colorTextTertiary,marginLeft:"8px"}}>{user?.username}</label>
             </div> 
         </Popover>
+        </>
+        )
+    }
+    return(
+        avatarPanel
     )
 }
 
@@ -38,7 +61,11 @@ const CustomToolbarUserPanel = (props:{popover?:JSX.Element})=>{
 const UserPopoverPanel=()=>{
     const{token} = useToken()
     const intl = useIntl()        
+    const {setAvatarPopoverOpen} = useConfigContext()
     const user = WardenGlobalThis.currentUser
+    const onClickHandler=()=>{
+        setAvatarPopoverOpen(false)
+    }
     return(
         <div>
             <Flex>
@@ -64,13 +91,13 @@ const UserPopoverPanel=()=>{
             <Divider style={{margin:"14px 0px 8px 0px"}} />
             <Space direction="horizontal" split={<Divider type="vertical" />}>              
                 <Tooltip title={intl.formatMessage({id:"global.button.edit"})}>
-                    <Button type="text"><EditOutlined /></Button>
+                    <Button onClick={onClickHandler} type="text"><EditOutlined /></Button>
                 </Tooltip>
                 <Tooltip title={intl.formatMessage({id:"global.button.exit"})}>
-                    <Button type="text"><LogoutOutlined /></Button>
+                    <Button onClick={onClickHandler} type="text"><LogoutOutlined /></Button>
                 </Tooltip>
                 <Tooltip title={intl.formatMessage({id:"global.button.more"})}>
-                    <Button type="text"><EllipsisOutlined /></Button>
+                    <Button onClick={onClickHandler} type="text"><EllipsisOutlined /></Button>
                 </Tooltip>            
             </Space>
         </div>

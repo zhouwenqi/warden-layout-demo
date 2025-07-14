@@ -12,4 +12,16 @@ export default {
     'switch.result.description':'A project can support different routing configurations with different layout effects, and each route can be independently configured to display its effects, At the same time, it can also reflect the effect of the left menu being empty when splitting the menu',
     'switch.result.tooltip.main':'Jump to the /main route',
     'switch.result.tooltip.company':'Jump to the /company route',
+    'leftExpand.link.about':'About us',
+    'leftExpand.link.help':'Help docs',
+    'skin.blueSky.label':'Blue sky',
+    'skin.blueChristmas.label':'Blue Christams',
+    'skin.blueLattice.label':'Muscovite',
+    'skin.starJellyfish.label':'Jellyfish',
+    'skin.starNeon.label':'Neon',
+    'skin.pinkRomantic.label':'Romantic',
+    'skin.greenMountain.label':'Jade Mountain',
+    'skin.paintSplashing.label':'Splashing',
+    'skin.orangeBubble.label':'Orange bubbles',
+    
 };

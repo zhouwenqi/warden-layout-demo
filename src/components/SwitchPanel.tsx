@@ -1,7 +1,6 @@
 import { Button, Result,Tooltip } from 'antd';
 import {useIntl,history} from 'umi'
 
-
 declare type JumpRoute = "/main" | "/company"
 
 const SwitchPanel = (props:{currentPath:JumpRoute}) => {

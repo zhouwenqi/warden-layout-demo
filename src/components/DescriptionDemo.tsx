@@ -2,6 +2,7 @@ import React from 'react';
 import { Badge, Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
 import { Container } from 'warden-layout/dist/esm';
+import {Icon} from 'umi'
 
 const items: DescriptionsProps['items'] = [
   {
@@ -66,7 +67,7 @@ const items: DescriptionsProps['items'] = [
         <br />
         Replication factor: 3
         <br />
-        Region: East China 1
+        Region: East China 1 
         <br />
       </>
     ),
@@ -75,7 +76,7 @@ const items: DescriptionsProps['items'] = [
 
 const DescriptionDemo: React.FC = () => {
   return(
-    <Container mode="Panel">
+    <Container mode="panel">
         <Descriptions title="User Info" bordered items={items} />
     </Container>
   )

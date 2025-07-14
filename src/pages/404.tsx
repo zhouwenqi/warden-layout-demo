@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Result } from 'antd';
 
-const App: React.FC = () => (
+const NotFoundPage: React.FC = () => (
   <Result
     status="404"
     title="404"
@@ -10,4 +10,4 @@ const App: React.FC = () => (
   />
 );
 
-export default App;
+export default NotFoundPage;

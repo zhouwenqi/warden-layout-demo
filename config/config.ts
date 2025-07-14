@@ -4,11 +4,20 @@ export default defineConfig({
   plugins: [
     '@umijs/plugins/dist/initial-state',
     '@umijs/plugins/dist/model',
+    '@umijs/plugins/dist/access',
     '@umijs/plugins/dist/locale'
   ],
   initialState: {},
   model: {},
+  access:{},
+  icons:{
+    include:[
+      "local:scale",
+      "local:wallet"
+    ]
+  },
   locale:{
+    antd: true,
     default:"en-US",
     baseSeparator: '-',
     baseNavigator: false,
@@ -17,7 +26,9 @@ export default defineConfig({
   routes: routes,
   npmClient: 'yarn',  
   mfsu:false,
+  headScripts:[{ src: '/scripts/loading.js', async: true }],
   define:{
-    'process.env.ENABLE_SETTING':process.env.ENABLE_SETTING
-  }
+    "process.env.ENABLE_SETTING":process.env.ENABLE_SETTING,
+    "process.env.ENABLE_CONFIG_STORAGE":process.env.ENABLE_CONFIG_STORAGE
+  }  
 });

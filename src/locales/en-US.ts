@@ -15,6 +15,7 @@ export default {
   'global.button.edit':'edit',
   'global.button.exit':'exit',
   'global.button.more':'more',
+  
   ...components,
   ...menus,
   ...titles,

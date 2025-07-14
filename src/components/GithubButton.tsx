@@ -2,8 +2,7 @@ import { SvgIcon, ToolbarButton } from "warden-layout"
 
 const GithubButton=()=>{
     const onClickHandler=()=>{
-        console.log("github...")
-        location.href="https://github.com/zhouwenqi/warden-antd"
+        location.href="https://github.com/zhouwenqi/warden-layout"
     }
     return(
         <ToolbarButton onClick={onClickHandler}>

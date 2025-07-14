@@ -10,7 +10,7 @@ import {
   Divider,
 } from 'antd';
 import {useIntl} from 'umi';
-import { useConfigContext, WardenGlobalThis } from 'warden-layout';
+import { useConfigContext, WardenGlobalThis,hexToRgbaString } from 'warden-layout';
 import GridPanel from './GridPanel';
 import ProjectPanel from './ProjectPanel';
 
@@ -35,13 +35,14 @@ const WeblcomePanel: React.FC = () => {
     }else{
       weltag = intl.formatMessage({id:'workbench.welcome.time.evening'})
     }
-  
+  const welcomeClass = config.backgroundBlur ? "warden-layout-blur" : ""  
+
   return(    
     <>
-        <Row justify="space-between" align="stretch" style={{
+        <Row justify="space-between" className={welcomeClass} align="stretch" style={{
           padding:token.paddingLG,
-          background:token.colorBgContainer,
-          marginTop: config.hideBorder ? "2px" : "0",
+          background: config.headTransparent || config.leftTransparent ? hexToRgbaString(token.colorBgContainer,0.6) : token.colorBgContainer,
+          marginTop: config.hideBorder ? "1px" : "0",
           marginLeft: config.hideBorder ?"1px": "0"
           }}>
           <Col>

@@ -123,7 +123,7 @@ return(
             </Typography>
     )
     return(
-        <Container mode="Panel" hideTitle={true}>
+        <Container mode="panel" hideTitle={true}>
             {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
         </Container>
     )

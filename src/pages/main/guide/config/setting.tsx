@@ -62,8 +62,8 @@ ENABLE_SETTING = true
     )
 
     return(
-        <Container mode="Panel" hideTitle={true}>
-        {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
-    </Container>
+        <Container mode="panel" hideTitle={true}>
+            {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
+        </Container>
     )
 }

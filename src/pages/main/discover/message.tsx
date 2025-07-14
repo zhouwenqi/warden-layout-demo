@@ -1,42 +1,158 @@
 import React from 'react';
-import { Button, Result,GetProp,ColorPickerProps,ColorPicker,Space } from 'antd';
-import { Container, useConfigContext } from 'warden-layout';
+import { Button, Result,GetProp,ColorPickerProps,ColorPicker,Space, Dropdown } from 'antd';
+import type {MenuProps} from 'antd';
+import { Container, useConfigContext,IExtraBadgeProps, IExtraTagProps } from 'warden-layout';
 import {useIntl} from 'umi';
+import { sendMenuMessage } from '@/utils/messageUtil';
 type Color = Extract<GetProp<ColorPickerProps, 'value'>,{ cleared: any }>
 
-
+/**
+ * page - message
+ * 
+ * @author zhouwenqi
+ */
 export default ()=> {
     const intl = useIntl()
-    const {badgeCount,setBadgeCount,config,setConfig} = useConfigContext()
-    const increase = () => {
-        setBadgeCount(badgeCount + 1);
-    };
-    
-    const decline = () => {
-        let newCount = badgeCount - 1;
-        if (newCount < 0) {
-        newCount = 0;
+    const {config,setConfig} = useConfigContext()
+
+    const randomMessage = () => {        
+        const newCount = Math.floor(Math.random() * 100);
+        const badgeData:IExtraBadgeProps = {
+            filterKey:"path",
+            filterValue:"/main/discover/message",
+            data:{
+                count:newCount,                
+                position:"left",
+                dot:false,
+                color:"red",
+            }
         }
-        setBadgeCount(newCount)
+        sendMenuMessage({id:"badge",data:badgeData})
+        console.log("menu-message...")    
+    };
+    const randomWelcome = () => {        
+        const newCount = Math.floor(Math.random() * 100);  
+        const badgeData:IExtraBadgeProps = {
+            filterKey:"path",
+            filterValue:"/main/discover/welcome",
+            data:{
+                count:newCount,
+                dot:false,
+                color:"red",
+            }
+        }
+        sendMenuMessage({id:"badge",data:badgeData})
+    };
+    const clearMenuBadge=(path:string)=>{ 
+        const badgeData:IExtraBadgeProps = {
+            filterKey:"path",
+            filterValue:path,
+            data:{
+                count:0,
+            }
+        }
+        sendMenuMessage({id:"badge",data:badgeData})
     };
 
-    const random = () => {
-        const newCount = Math.floor(Math.random() * 100);
-        setBadgeCount(newCount)
+    const setMenuTag=(data:any)=>{
+        const path = "/main/discover/introduce"
+        const tagData:IExtraTagProps = {
+            filterKey:"path",
+            filterValue:path,
+            data
+        }
+        sendMenuMessage({id:"tag",data:tagData});        
+    }
+    
+
+    const badgeItems: MenuProps['items'] = [
+        {
+          key: 'message',
+          label: intl.formatMessage({id:"main.discover.message.badge.random.message"}),
+        },
+        {
+            key:'welcome',
+            label:intl.formatMessage({id:"main.discover.message.badge.random.welcome"}),
+        },
+        {
+            type: 'divider',
+        },
+        {
+            key: 'clear',
+            label: intl.formatMessage({id:"main.discover.message.badge.clear.all"}),
+        },
+    ]
+    const onBadgeClick: MenuProps['onClick'] = ({ key }) => {
+        console.log(key)
+        switch(key){
+            case 'message':
+                randomMessage()
+                break
+            case 'welcome':
+                randomWelcome();
+                break
+            case 'clear':
+                clearMenuBadge("/main/discover/message")    
+                clearMenuBadge("/main/discover/welcome")  
+                break
+        }
     };
+
+    const tagsItems: MenuProps['items'] = [
+        {
+            key: 'green',
+            label: intl.formatMessage({id:"main.discover.message.tag.green"}),
+        },
+        {
+            key:'blue',
+            label:intl.formatMessage({id:"main.discover.message.tag.blue"}),
+        },
+        {
+            key:'red',
+            label:intl.formatMessage({id:"main.discover.message.tag.red"}),
+        },
+        {
+            type: 'divider',
+        },
+        {
+            key: 'reset',
+            label: intl.formatMessage({id:"main.discover.message.tag.reset"}),
+        },
+    ]
+    const onTagClick: MenuProps['onClick'] = ({ key }) => {
+        console.log(key)
+        switch(key){
+            case 'green':
+                setMenuTag({color:"success",text:"Success"})
+                break
+            case 'blue':
+                setMenuTag({color:"blue",bordered:false})
+                break
+            case 'red':
+                setMenuTag({color:"red",bordered:false,text:"Hot"})
+                break
+            case 'reset':
+                setMenuTag({})
+                break
+        }
+    };
+
     return(
-        <Container>
-    <Result
-        status="success"
-        title={intl.formatMessage({id:"main.discover.message.result.title"})}
-        subTitle={intl.formatMessage({id:"main.discover.message.result.description"})}
-        extra={[
-            <Space key="sapce">
-                <Button type="primary" onClick={increase} key="increase">{intl.formatMessage({id:"main.discover.message.button.increase"})}</Button>
-                <Button key="decline" onClick={decline}>{intl.formatMessage({id:"main.discover.message.button.decline"})}</Button>
-                <Button key="random" onClick={random}>{intl.formatMessage({id:"main.discover.message.button.random"})}</Button>
-                <ColorPicker value={config.primaryColor} key="color" defaultValue={config.primaryColor} onChange={(value:Color)=>{setConfig({...config,primaryColor:value.toHexString()})}} />
-            </Space>        
-        ]}
-  /></Container>)
+        <Container mode="panel">
+            <Result
+                status="success"
+                title={intl.formatMessage({id:"main.discover.message.result.title"})}
+                subTitle={intl.formatMessage({id:"main.discover.message.result.description"})}                
+                extra={[
+                    <Space key="sapce">    
+                        <Dropdown menu={{items:badgeItems,onClick:onBadgeClick}}>
+                            <Button key="Badge">{intl.formatMessage({id:"main.discover.message.button.badge"})}</Button>
+                        </Dropdown>  
+                        <Dropdown menu={{items:tagsItems,onClick:onTagClick}}>
+                            <Button key="Tag">{intl.formatMessage({id:"main.discover.message.button.tag"})}</Button>
+                        </Dropdown>
+                        <ColorPicker value={config.primaryColor} key="color" defaultValue={config.primaryColor} onChange={(value:Color)=>{setConfig({...config,primaryColor:value.toHexString()})}} />
+                    </Space>        
+                ]}
+        /></Container>)
 }

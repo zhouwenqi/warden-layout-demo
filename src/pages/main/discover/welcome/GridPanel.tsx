@@ -2,7 +2,7 @@ import { Col,Row,Card,Space,Flex,theme,Button,Tag, List,Typography,Avatar } from
 import {CaretUpOutlined,MoreOutlined,FlagOutlined,CaretDownOutlined} from '@ant-design/icons';
 import {useIntl,getLocale} from 'umi'
 import AppChart from '@/components/AppChart';
-import { useConfigContext } from 'warden-layout/dist/esm';
+import { hexToRgbaString, useConfigContext } from 'warden-layout/dist/esm';
 const {Text} = Typography;
 
 const {useToken} = theme
@@ -157,7 +157,8 @@ const GridPanel=()=>{
 
 const TotalCard=(props:GridCardProps)=>{
     const {token} = useToken()
-    const {config} = useConfigContext()
+    const {config} = useConfigContext()    
+   
     let tagIcon = (<CaretUpOutlined />)
     switch(props.data.rateType){
         case "drop":
@@ -170,6 +171,8 @@ const TotalCard=(props:GridCardProps)=>{
             break
     }
     const pd = config.compact ? "6px" : "10px"
+    const bgColor = hexToRgbaString(token.colorBgContainer,0.6)
+    const cardClass = config.backgroundBlur ? "warden-layout-blur" : "" 
     return(        
       <Col
       xs={24}
@@ -177,7 +180,7 @@ const TotalCard=(props:GridCardProps)=>{
       md={12}
       lg={12}
       xl={12}>
-        <Card style={{margin:pd}} bordered={!config.hideBorder}>
+        <Card style={{margin:pd,background:bgColor}} bordered={!config.hideBorder} className={cardClass}>
           <Flex justify="space-between">
             <Space direction="vertical" size={14}>
               <label style={{fontSize:token.fontSizeHeading5,color:token.colorTextSecondary}}>{props.data.title}</label>                            
@@ -196,6 +199,8 @@ const LogsPanel=()=>{
     const intl = useIntl()
     const {config} = useConfigContext()
     const pd = config.compact ? "6px" : "10px"
+    const {token} = useToken()
+    
     const cnData = [
         {id:1,name:'Apple',face:'1',createDate:'2022/12/8 23:24',modifyDate:'2022/12/8 23:24',action:'DELETE',terminal:'MOBILE',appType:'IOS',ip:'192.168.4.52',content:(<><Text strong>Apple </Text><Text type="success">审核</Text><Text> 了一张订单： </Text><Text type="secondary">PSN204823422</Text></>)},
         {id:2,name:'Microsoft',face:'2',createDate:'2022/12/8 23:24',modifyDate:'2022/12/8 23:24',action:'DELETE',terminal:'MOBILE',appType:'IOS',ip:'192.168.4.52',content:<><Text strong>Microsoft </Text><Text type="danger">删除</Text><Text> 了订单： </Text><Text type="secondary" delete>PSN49837246</Text></>},
@@ -216,9 +221,11 @@ const LogsPanel=()=>{
       ]
       
     const data = getLocale()=='en-US' ? enData : cnData
+    const bgColor = config.headTransparent || config.leftTransparent ? hexToRgbaString(token.colorBgContainer,0.6) : token.colorBgContainer
+    const cardClass = config.backgroundBlur ? "warden-layout-blur" : "" 
     return(
         <Col span={24}>
-            <Card style={{margin:pd}} bordered={!config.hideBorder} title={intl.formatMessage({id:'workbench.card.logs.title'})}  extra={<Button type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>}>
+            <Card className={cardClass} style={{margin:pd,background:bgColor}} bordered={!config.hideBorder} title={intl.formatMessage({id:'workbench.card.logs.title'})}  extra={<Button type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>}>
             <List itemLayout="horizontal" dataSource={data} renderItem={(item)=>(
                 <List.Item actions={[<a>{intl.formatMessage({id:'global.button.view'})}</a>]}>
                 <List.Item.Meta

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
-import { Avatar, List, Space,App} from 'antd';
-import { Container } from 'warden-layout';
+import { Avatar, List, Space,App,theme} from 'antd';
+import { Container, hexToRgbaString,useConfigContext } from 'warden-layout';
 import {useIntl} from 'umi';
+
+const {useToken} = theme
 
 const data = Array.from({ length: 23 }).map((_, i) => ({
   href: 'https://microwarp.com',
@@ -34,8 +36,9 @@ const ContainerPage=() => {
             placement:"bottomRight"
         })
     }
+
     return(
-        <Container mode="Panel">
+        <Container mode="panel">
             <List
                 itemLayout="vertical"
                 size="large"

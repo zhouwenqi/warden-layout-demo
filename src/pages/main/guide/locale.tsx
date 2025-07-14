@@ -33,9 +33,11 @@ export default ()=>{
                 warden-layout采用umi的国际化钩子对布局进行自动国际化，只需要配置好相应的语言就好，可参考本demo中的locale配置结构即可，并且配置结构采用类似umi和antd-pro类似的通用做法。
                 </Paragraph>   
                 <Paragraph>
-                    通常国际化配置放在<Text code>src/locale/*</Text>下，然后用语言和模块再细进行一步细分，菜单的内容放在menu(.ts|tsx)中，配置项key都以<Text code>menu.</Text>开头,后面再跟着用路由或菜单key进行切割，列如：<Text code>/user/order</Text>路由或菜单key对应的locale中的key就是 <Text code>menu.user.order</Text>，以此类推。例如：
+                    通常国际化配置放在<Text code>src/locale/*</Text>下，然后用语言和模块再细进行一步细分。                    
                 </Paragraph>                   
                 <Paragraph>
+                    <Title level={4}>菜单</Title> 
+                    菜单的内容放在menu(.ts|tsx)中，配置项key都以<Text code>menu.</Text>开头,后面再跟着用路由或菜单key进行切割，列如：<Text code>/user/order</Text>路由或菜单key对应的locale中的key就是 <Text code>menu.user.order</Text>，以此类推。例如：
                     <Title level={5}>zh-CN.ts</Title>                 
                     <pre>
                         {preCnCode}
@@ -61,9 +63,11 @@ export default ()=>{
                 The warden layout uses the internationalization hook of umi to automatically internationalize the layout, and only needs to configure the corresponding language. You can refer to the local configuration structure in this demo, and the configuration structure adopts a common approach similar to umi and antd pro.
                 </Paragraph>   
                 <Paragraph>
-                Usually, internationalization configuration is placed under<Text code>src/scale/*</Text>, and then further subdivided by language and module. The menu content is placed in menu (. ts | tsx), and the configuration item keys are all start with <Text code>menu</Text>, followed by cutting with routing or menu key, for example:The key in the local area corresponding to the routing or menu key in <Text code>/user/order</Text>is<Text code>menu. user. order</Text>, and so on. For example:
+                Usually, internationalization configuration is placed under<Text code>src/scale/*</Text>, and then further subdivided by language and module.
                 </Paragraph>    
                 <Paragraph>
+                <Title level={4}>Menu</Title> 
+                The menu content is placed in menu (. ts | tsx), and the configuration item keys are all start with <Text code>menu</Text>, followed by cutting with routing or menu key, for example:The key in the local area corresponding to the routing or menu key in <Text code>/user/order</Text>is<Text code>menu. user. order</Text>, and so on. For example:
                     <Title level={5}>zh-CN.ts</Title>                 
                     <pre>
                         {preCnCode}
@@ -84,8 +88,8 @@ export default ()=>{
     )
 
     return(
-        <Container mode="Panel"  hideTitle={true}>
-        {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
-    </Container>
+        <Container mode="panel"  hideTitle={true}>
+            {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
+        </Container>
     )
 }

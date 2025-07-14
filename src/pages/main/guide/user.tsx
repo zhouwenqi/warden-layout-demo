@@ -13,10 +13,16 @@ import { getUserInfo } from "@/request/userService"
  * umi RuntimeConfig 
  * please refer to: https://umijs.org/docs/api/runtime-config
  */
-export async function getInitialState(){  
-    const user = await getUserInfo()
-    WardenGlobalThis.currentUser = user
-    ......
+export async function getInitialState():Promise<{
+  spin?: JSX.Element;
+  getUserInfo?: () => Promise<Warden.IUser | undefined>;
+}> {
+    const getUserInfo = async() => {      
+       fetch ...
+    }
+    return {
+      getUserInfo:getUserInfo  
+    }
 }
     `
     const preUserCode = `
@@ -58,13 +64,14 @@ export default ()=>{
         <Typography style={{margin:"0px"}}>
                 <Title style={{marginTop:"0px"}} level={2}>当前用户</Title>
                 <Paragraph>
-                当前用户是指已登录的用户，正常逻辑下进入使用布局页面前用户已经登录，在此之前需要将用户信息（通过接口已取得）存起来，以便布局组件使用，用户信息可以存储在布局组件带的<Text code>WardenGlobalThis</Text>对象中，放入最佳时间采用umi的运行时配置<Text code>getInitialState</Text>方法中，因为一般的调用接口获取用户信息都在此方法中进行，例如：
+                当前用户是指已登录的用户，正常逻辑下进入使用布局页面前用户已经登录，在此之前需要声明一个请求获取用户信息的方法<Text code>getUserInfo</Text>，采用umi的运行时配置<Text code>getInitialState</Text>将方法返回<Text code>useModel数据流</Text>钩子中(采用antd-pro类似做法)，例如：
                 </Paragraph>     
                 <Paragraph>
                     <Title level={5}>app.tsx</Title>                 
                     <pre>
                         {preConfigCode}
                     </pre>
+                    <Text type="secondary">如果不想使用默认loading效果，可自定义一个组件放入<Text code>Spin</Text>和获取用户信息方法一并返回</Text>
                 </Paragraph>
                 <Title level={4}>➰为何一定要设备当前用户信息？</Title>
                 <Paragraph>
@@ -102,13 +109,14 @@ export default ()=>{
         <Typography style={{margin:"0px"}}>
                 <Title style={{marginTop:"0px"}} level={2}>Current user</Title>
                 <Paragraph>
-                The current user refers to the logged in user. Under normal logic, the user has already logged in before entering the layout page. Prior to this, the user information (obtained through the interface) needs to be stored for use by the layout component. The user information can be stored in the<Text code>WardenGlobalThis</Text>object included in the layout component and placed in the<Text code>getInitialState</Text>method of the runtime configuration using umi at the optimal time. This is because most API calls to obtain user information are usually done in this method, for example:
+                The current user refers to the logged in user. Under normal logic, the user has already logged in before entering the layout page. Before that, a method<Text code>getUserInfo</Text>needs to be declared to request user information. Use umi's runtime configuration<Text code>getInitialState</Text>to return the method to the<Text code>useModel data stream</Text>hook (using a similar approach to antd pro). For example:
                 </Paragraph>     
                 <Paragraph>
                     <Title level={5}>app.tsx</Title>                 
                     <pre>
                         {preConfigCode}
                     </pre>
+                    <Text type="secondary">If you do not want to use the default loading effect, you can customize a component to be placed in<Text code>Spin</Text>and return along with the method for obtaining user information.</Text>
                 </Paragraph>
                 <Title level={4}>➰Why is it necessary to have the current user information of the device?</Title>
                 <Paragraph>
@@ -144,7 +152,7 @@ export default ()=>{
     )
 
     return(
-        <Container mode="Panel" hideTitle={true}>
+        <Container mode="panel" hideTitle={true}>
             {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
         </Container>
     )

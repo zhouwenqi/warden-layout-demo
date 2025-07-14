@@ -1,0 +1,20 @@
+.warden-choose-project-item{
+    background-color: transparent;
+    padding:8px 10px;
+}
+.warden-choose-project-item .project-icon {
+    opacity: 0;
+}
+.warden-choose-project-item[data-selected=true]{
+    background-color: currentColor;        
+    .project-icon {
+        opacity: 1;
+    } 
+}
+.warden-choose-project-item:hover{
+    background-color: currentColor;  
+    .project-icon {
+        opacity: 1;
+        filter:grayscale(100%);
+    }
+}

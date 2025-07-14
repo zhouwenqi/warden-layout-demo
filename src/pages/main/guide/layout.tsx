@@ -96,7 +96,7 @@ export default [
                         {preRouteCode}
                     </pre>
                     💡强烈建议只给一级路由使用布局
-                </Paragraph>              
+                </Paragraph>     
             </Typography>
     )
     const enTypography = (
@@ -130,7 +130,7 @@ export default [
             </Typography>
     )
     return(
-        <Container mode="Panel" hideTitle={true}>
+        <Container mode="panel" hideTitle={true}>
             {useIntl().locale == "zh-CN" ? cnTypography : enTypography}
         </Container>
     )

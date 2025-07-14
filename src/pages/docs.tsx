@@ -1,7 +1,11 @@
+import { Badge, Dropdown, Space, Table,DatePicker,Select,TimePicker } from 'antd';
+const { RangePicker } = DatePicker;
 const DocsPage = () => {
   return (
     <div>
-      <p>This is umi docs.</p>      
+      <TimePicker />
+                  <DatePicker />
+                  <RangePicker />     
     </div>
   );
 };

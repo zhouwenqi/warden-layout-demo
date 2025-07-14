@@ -73,7 +73,7 @@ The main features are as follows:
     )
     return(
         <>
-        <Container mode="Box" hideTitle={true} hideBreadcrumb={true}>
+        <Container mode="box" hideTitle={true} hideBreadcrumb={true}>
             {intl.locale == "zh-CN" ? cnTypography : enTypography}            
             <Divider />    
         </Container>

@@ -6,33 +6,42 @@ export default [
     { path: "/", redirect:"/main", name:"Home",  },
     { path: "/docs", component: "docs", name:"Docs" },
     { path: "/404", component: "404", layout:false},
+    { path: "/403", component: "403", layout:false},
     { path: "/main", component:"@/layouts/main", name:"Main", routes:[
         { path: "/main/", redirect:"/main/discover"},             
-        { path: "/main/discover", name:"Discover", icon:"svg_/svg/menu/discover.svg", routes:[
+        { path: "/main/discover", name:"Discover", icon:"svg@/svg/menu/main-discover", routes:[
             { path: "/main/discover/", redirect:"/main/discover/introduce"},
-            { path: "/main/discover/welcome", component: "./main/discover/welcome/index",name:"Welcome",icon:"svg_/svg/menu/welcome.svg"},
-            { path: "/main/discover/introduce", component: "./main/discover/introduce",name:"Introduce",icon:"svg_/svg/menu/main-home.svg"}, 
-            { path: "/main/discover/message", component: "./main/discover/message",name:"Message",icon:"svg_/svg/menu/main-message.svg"},
-            { path: "/main/discover/general", name:"general",icon:"svg_/svg/menu/general.svg",routes:[
+            { path: "/main/discover/welcome", component: "./main/discover/welcome/index",name:"Welcome", badge:"10", icon:"svg@/svg/menu/main-welcome"},
+            { path: "/main/discover/introduce", component: "./main/discover/introduce",name:"Introduce", tag:"New..", icon:"svg@/svg/menu/main-home"}, 
+            { path: "/main/discover/message", component: "./main/discover/message",name:"Message", badge:{position:"left"}, icon:"svg@/svg/menu/main-message"},
+            { path: "/main/discover/general", name:"general",icon:"svg@/svg/menu/main-general",routes:[
                 { path: "/main/discover/general/", redirect:"/main/discover/general/basic"},
-                { path: "/main/discover/general/basic", component:"./main/discover/general/basic",name:"Basic",icon:"svg_/svg/menu/main-basic.svg"},                                
-                { path: "/main/discover/general/container", component:"./main/discover/general/container",name:"Container",icon:"svg_/svg/menu/bookmark.svg"},
-                { path: "/main/discover/general/dynamic", component:"./main/discover/general/dynamic", name:"Dynamic",icon:"svg_/svg/menu/code.svg"}
-            ]}            
-        ]},
-        { path: "/main/guide", name:"Guide", icon:"svg_/svg/menu/guide.svg", routes:[
-            { path: "/main/guide/layout", component: "./main/guide/layout",name:"Layout", icon:"svg_/svg/menu/main-layout.svg"},
-            { path: "/main/guide/toolbar", component: "./main/guide/toolbar",name:"Toolbar", icon:"svg_/svg/menu/main-toolbar.svg"},
-            { path: "/main/guide/", redirect:"/main/guide/config"},
-            { path: "/main/guide/config",name:"Config", icon:"svg_/svg/menu/main-config.svg", routes:[
-                { path: "/main/guide/config/", redirect:"/main/guide/config/file"},
-                { path: "/main/guide/config/file", component:"./main/guide/config/file", name:"File", icon:"svg_/svg/menu/main-file.svg"},
-                { path: "/main/guide/config/setting", component:"./main/guide/config/setting", name:"Setting", icon:"svg_/svg/menu/setup-horizontal.svg"}
+                { path: "/main/discover/general/basic", component:"./main/discover/general/basic",name:"Basic",icon:"svg@/svg/menu/main-basic"},                                
+                { path: "/main/discover/general/container", component:"./main/discover/general/container",name:"Container",icon:"svg@/svg/menu/bookmark"},
+                { path: "/main/discover/general/dynamic", component:"./main/discover/general/dynamic", name:"Dynamic",icon:"svg@/svg/menu/code"}
             ]},
-            { path: "/main/guide/locale", component: "./main/guide/locale",name:"Locale",icon:"svg_/svg/menu/main-locale.svg"},
-            { path: "/main/guide/user", component: "./main/guide/user",name:"User",icon:"svg_/svg/menu/users.svg"}
+            { path: "/main/discover/components",name:"Components", icon:"svg@/svg/menu/main-components", routes:[
+                { path: "/main/discover/components/", redirect:"/main/discover/components/table"},
+                { path: "/main/discover/components/table", component:"./main/discover/components/table", name:"Table", icon:"svg@/svg/menu/main-table"},
+                { path: "/main/discover/components/form", component:"./main/discover/components/form", name:"Form", icon:"svg@/svg/menu/main-form"},
+                { path: "/main/discover/components/card", component:"./main/discover/components/card", name:"Card", icon:"svg@/svg/menu/main-card"},
+                { path: "/main/discover/components/list", component:"./main/discover/components/list", name:"List", icon:"svg@/svg/menu/main-list"}
+            ]}           
         ]},
-        { path: "/main/switch", component: "./main/switch",name:"Switch", icon:"svg_/svg/menu/switch.svg",},
+        { path: "/main/guide", name:"Guide", icon:"svg@/svg/menu/main-guide", routes:[
+            { path: "/main/guide/layout", component: "./main/guide/layout",name:"Layout", icon:"svg@/svg/menu/main-layout"},
+            { path: "/main/guide/toolbar", component: "./main/guide/toolbar",name:"Toolbar", icon:"svg@/svg/menu/main-toolbar"},
+            { path: "/main/guide/", redirect:"/main/guide/config"},
+            { path: "/main/guide/config",name:"Config", icon:"svg@/svg/menu/main-config", routes:[
+                { path: "/main/guide/config/", redirect:"/main/guide/config/file"},
+                { path: "/main/guide/config/file", component:"./main/guide/config/file", name:"File", icon:"svg@/svg/menu/main-file"},
+                { path: "/main/guide/config/attribute", component:"./main/guide/config/attribute", name:"Attribute", icon:"svg@/svg/menu/main-attr"},
+                { path: "/main/guide/config/setting", component:"./main/guide/config/setting", name:"Setting", icon:"svg@/svg/menu/setup-horizontal"}
+            ]},            
+            { path: "/main/guide/locale", component: "./main/guide/locale",name:"Locale",icon:"svg@/svg/menu/main-locale"},
+            { path: "/main/guide/user", component: "./main/guide/user",name:"User",icon:"svg@/svg/menu/users"}
+        ]},
+        { path: "/main/switch", component: "./main/switch",name:"Switch", icon:"svg@/svg/menu/main-switch",},
     ]},
     { path: "/company", component:"@/layouts/company", name:"Company", routes:[
         { path: "/company/", redirect:"/company/control"},        
@@ -70,13 +79,13 @@ export default [
             { path: "/company/system/important", name:"Important",icon:"UserOutlined", routes:[
                 { path: "/company/system/important/", redirect:"/company/system/important/configuration"}, 
                 { path: "/company/system/important/configuration", component: "./company/system/important/configuration",name:"Configuration",icon:"ControlOutlined"},
-                { path: "/company/system/important/dept", component: "./company/system/important/dept",name:"Dept",icon:"ApartmentOutlined"},
+                { path: "/company/system/important/dept", component: "./company/system/important/dept",name:"Dept",icon:"umi@wallet"},
             ]},
             { path: "/company/system/security", name:"Security",icon:"SafetyOutlined", routes:[
                 { path: "/company/system/security/", redirect:"/company/system/security/user"}, 
                 { path: "/company/system/security/user", component: "./company/system/security/user",name:"User",icon:"TeamOutlined"},
-                { path: "/company/system/security/role", component: "./company/system/security/role",name:"Role",icon:"SolutionOutlined"},
-                { path: "/company/system/security/permission", component: "./company/system/security/permission",name:"Permission",icon:"SisternodeOutlined"},
+                { path: "/company/system/security/role", component: "./company/system/security/role",name:"Role",icon:"SolutionOutlined",access:"canRole"},
+                { path: "/company/system/security/permission", component: "./company/system/security/permission",name:"Permission",icon:"umi@scale"},
             ]},
             
         ]},
