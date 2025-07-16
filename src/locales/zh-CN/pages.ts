@@ -36,7 +36,7 @@ export default {
     'main.discover.message.tag.green':'绿色成功标签',
     'main.discover.message.tag.blue':'蓝色无边标签',
     'main.discover.message.tag.red':'红色文字标签',
-    'main.discover.message.tag.reset':'还原标签',
+    'main.discover.message.tag.clear':'清除标签',
     'main.discover.general.basic.toast.title':'演示提醒',
     'main.discover.general.basic.toast.content':'这是一个没有使用容器组件<Container />的效果展示',
     'main.discover.general.container.toast.title':'演示提醒',

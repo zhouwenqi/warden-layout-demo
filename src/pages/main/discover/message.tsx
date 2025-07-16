@@ -27,8 +27,7 @@ export default ()=> {
                 color:"red",
             }
         }
-        sendMenuMessage({id:"badge",data:badgeData})
-        console.log("menu-message...")    
+        sendMenuMessage({id:"badge",data:badgeData})         
     };
     const randomWelcome = () => {        
         const newCount = Math.floor(Math.random() * 100);  
@@ -115,8 +114,8 @@ export default ()=> {
             type: 'divider',
         },
         {
-            key: 'reset',
-            label: intl.formatMessage({id:"main.discover.message.tag.reset"}),
+            key: 'clear',
+            label: intl.formatMessage({id:"main.discover.message.tag.clear"}),
         },
     ]
     const onTagClick: MenuProps['onClick'] = ({ key }) => {
@@ -126,13 +125,13 @@ export default ()=> {
                 setMenuTag({color:"success",text:"Success"})
                 break
             case 'blue':
-                setMenuTag({color:"blue",bordered:false})
+                setMenuTag({color:"blue",bordered:false,text:"Blue!"})
                 break
             case 'red':
                 setMenuTag({color:"red",bordered:false,text:"Hot"})
                 break
-            case 'reset':
-                setMenuTag({})
+            case 'clear':
+                setMenuTag(undefined)
                 break
         }
     };

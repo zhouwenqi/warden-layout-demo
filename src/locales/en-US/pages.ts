@@ -35,7 +35,7 @@ export default {
     'main.discover.message.tag.green':'Green success tag',
     'main.discover.message.tag.blue':'Blue borderless tag',
     'main.discover.message.tag.red':'Red text and tag',
-    'main.discover.message.tag.reset':'Reset tag',
+    'main.discover.message.tag.clear':'Clear tag',
     'main.discover.general.basic.toast.title':'demo prompt',
     'main.discover.general.basic.toast.content':'This is an effect display without using the container component<Container/>',
     'main.discover.general.container.toast.title':'demo prompt',

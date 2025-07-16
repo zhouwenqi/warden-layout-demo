@@ -8595,10 +8595,10 @@ walker@^1.0.8:
   dependencies:
     makeerror "1.0.12"
 
-warden-layout@2.6.6:
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/warden-layout/-/warden-layout-2.6.6.tgz#27e703aab1c69da1a57e582f8529578a42cf87ba"
-  integrity sha512-yYSKRuGXvi+hUK6Fp9K5Ptg17jguXtLiMt8v7UT4ObJcIdf4FS0tH78/8rm9A01Nx4sZBi3PIhmDWy0/PZl+eA==
+warden-layout@2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/warden-layout/-/warden-layout-2.7.1.tgz#cf294643c53f80fd1626917120c1349ff41a134e"
+  integrity sha512-cC+a7WklZ+COu6K6Dm9t1hVEND7Rmb+ELD3I8VcJ1Im1qw4GnHBXIXKUHG4+ItVTAacnOvPceu0cQUzlDEaNyw==
   dependencies:
     "@ant-design/colors" "^7.1.0"
     "@ant-design/icons" "^5.3.7"
