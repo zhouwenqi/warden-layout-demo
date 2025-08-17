@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Result,GetProp,ColorPickerProps,ColorPicker,Space, Dropdown } from 'antd';
 import type {MenuProps} from 'antd';
 import { Container, useConfigContext,IExtraBadgeProps, IExtraTagProps } from 'warden-layout';

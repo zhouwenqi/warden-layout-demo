@@ -1,101 +1,4 @@
-import { useConfigContext,Warden } from "warden-layout"
-
-const SkinBlueSky=()=>(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: 'url("/images/skins/blue-sky-bg.png")',
-        backgroundSize:"cover",
-    }}>
-    </div>
-)
-const SkinBlueChristmas=()=>(
-    
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: 'url("/images/skins/blue-christmas-bg.png")',
-        backgroundSize:"cover",
-    }}>
-    </div>
-)
-const SkinBlueLattice=()=>{
-    const {config} = useConfigContext()
-    const imgUri = config.layoutType == "leftMenu" ? 'url("/images/skins/blue-lattice-bg-left.png")' : 'url("/images/skins/blue-lattice-bg-top.png")'
-    return(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: imgUri,
-        backgroundSize:"cover",
-    }}>
-    </div>)
-}
-const SkinStarJellyfish=()=>{
-    return(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: 'url("/images/skins/star-jellyfish-bg.jpg")',
-        backgroundSize:"cover",
-    }}>
-    </div>)
-}
-const SkinStarNeon=()=>{
-    const {config} = useConfigContext()
-    const imgUri = config.layoutType == "leftMenu" ? 'url("/images/skins/star-neon-bg-left.jpg")' : 'url("/images/skins/star-neon-bg-top.jpg")'
-    return(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: imgUri,
-        backgroundSize:"cover",
-    }}>
-    </div>)
-}
-const SkinPinkRomantic=()=>{
-    return(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: 'url("/images/skins/pink-romantic-bg.jpg")',
-        backgroundSize:"cover",
-    }}>
-    </div>)
-}
-const SkinGreenMountain=()=>{
-    return(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: 'url("/images/skins/green-mountain-bg.jpg")',
-        backgroundSize:"cover",
-    }}>
-    </div>)
-}
-const SkinPaintSplashing=()=>{
-    const {config} = useConfigContext()
-    const imgUri = config.layoutType == "leftMenu" ? 'url("/images/skins/paint-splashing-bg-left.jpg")' : 'url("/images/skins/paint-splashing-bg-top.jpg")'
-    return(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: imgUri,
-        backgroundSize:"cover"
-    }}>
-    </div>)
-}
-const SkinOrangeBubble=()=>{
-    return(
-    <div style={{
-        width:"100%",
-        height:"100%",  
-        backgroundImage: 'url("/images/skins/orange-bubble-bg.jpg")',
-        backgroundSize:"cover",
-    }}>
-    </div>)
-}
-
+import { Warden } from "warden-layout"
 
 const defaultSkins:Warden.IMenuSkin[]=[
      {
@@ -103,14 +6,14 @@ const defaultSkins:Warden.IMenuSkin[]=[
         primaryColor:"#358cf1",
         name:"blueSky",
         label:"blueSky",
-        content:<SkinBlueSky />,          
+        backgroundImage:"/images/skins/blue-sky-bg.png",
         icon:"/images/skins/blue-sky-small.png"
     },{
         theme:"light",
         primaryColor:"#3a8ef7",
         name:"blueChristmas",       
         label:"blueChristmas",   
-        content:<SkinBlueChristmas />,
+        backgroundImage:"/images/skins/blue-christmas-bg.png",
         icon:"/images/skins/blue-christmas-small.png"
     },
     {
@@ -118,7 +21,7 @@ const defaultSkins:Warden.IMenuSkin[]=[
         primaryColor:"#1d63b9",
         name:"blueLattice",
         label:"blueLattice",
-        content:<SkinBlueLattice />,
+        backgroundImage:"/images/skins/blue-lattice-bg-top.png,/images/skins/blue-lattice-bg-left.png",
         icon:"/images/skins/blue-lattice-small.png"
     },
     {
@@ -126,7 +29,7 @@ const defaultSkins:Warden.IMenuSkin[]=[
         primaryColor:"#ff677b",
         name:"pinkRomantic",
         label:"pinkRomantic",
-        content:<SkinPinkRomantic />,
+        backgroundImage:"/images/skins/pink-romantic-bg.jpg",
         icon:"/images/skins/pink-romantic-small.jpg"
     },
     {
@@ -136,7 +39,7 @@ const defaultSkins:Warden.IMenuSkin[]=[
         menuByPrimary:false,
         name:"greenMountain",
         label:"greenMountain",
-        content:<SkinGreenMountain />,
+        backgroundImage:"/images/skins/green-mountain-bg.jpg",
         icon:"/images/skins/green-mountain-small.jpg"
     },
     {
@@ -145,7 +48,7 @@ const defaultSkins:Warden.IMenuSkin[]=[
         menuByPrimary:false,
         name:"paintSplashing",
         label:"paintSplashing",
-        content:<SkinPaintSplashing />,
+        backgroundImage:"/images/skins/paint-splashing-bg-top.jpg,/images/skins/paint-splashing-bg-left.jpg",
         icon:"/images/skins/paint-splashing-small.jpg"
     },
     {
@@ -155,7 +58,7 @@ const defaultSkins:Warden.IMenuSkin[]=[
         menuByPrimary:false,
         name:"orangeBubble",
         label:"orangeBubble",
-        content:<SkinOrangeBubble />,
+        backgroundImage:"/images/skins/orange-bubble-bg.jpg",
         icon:"/images/skins/orange-bubble-small.jpg"
     },
     {
@@ -164,7 +67,7 @@ const defaultSkins:Warden.IMenuSkin[]=[
         name:"starJellyfish",
         menuByPrimary:false,
         label:"starJellyfish",
-        content:<SkinStarJellyfish />,
+        backgroundImage:"/images/skins/star-jellyfish-bg.jpg",
         icon:"/images/skins/star-jellyfish-small.jpg"
     },
     {
@@ -172,7 +75,7 @@ const defaultSkins:Warden.IMenuSkin[]=[
         primaryColor:"#e53d32",
         name:"starNeon",
         label:"starNeon",
-        content:<SkinStarNeon />,
+        backgroundImage:"/images/skins/star-neon-bg-top.jpg,/images/skins/star-neon-bg-left.jpg",
         icon:"/images/skins/star-neon-small.jpg"
     }
 ]

@@ -1,8 +1,8 @@
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { TableColumnsType, TableProps} from 'antd';
-import { Badge, Dropdown, Space, Table,DatePicker,Select,TimePicker } from 'antd';
-import { Container } from 'warden-layout';
+import { Badge, Dropdown, Space, Table,DatePicker,TimePicker } from 'antd';
+import { Container,useConfigContext } from 'warden-layout';
 
 const { RangePicker } = DatePicker;
 
@@ -196,6 +196,8 @@ const expandedRowRender = () => (
 
 
 const App: React.FC = () => {
+    const {config} = useConfigContext()
+    const md = config.compact ? "14px" : "20px"
     return(      
         <>
         <Container mode="panel">
@@ -204,7 +206,7 @@ const App: React.FC = () => {
               <DatePicker />
               <RangePicker />
             </Space>            
-            <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
+            <Table<DataType> style={{marginTop:md}} columns={columns} dataSource={data} onChange={onChange} />
             <Table<GroupDataType>
             columns={groupColumns}
             expandable={{ expandedRowRender, defaultExpandedRowKeys: ['0'] }}

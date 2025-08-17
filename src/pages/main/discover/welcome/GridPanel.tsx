@@ -11,7 +11,7 @@ const GridPanel=()=>{
     const data:GridInfo[] = [
         {id:1,title:intl.formatMessage({id:'workbench.card.registrations.title'}),tag:intl.formatMessage({id:'workbench.card.registrations.tag'}),total:'629',iconName:'member1',iconColor:"#61aa4b",rate:'50%',rateType:'rise'},
         {id:2,title:intl.formatMessage({id:'workbench.card.orders.title'}),tag:intl.formatMessage({id:'workbench.card.orders.tag'}),total:'1198',iconName:'order1',iconColor:"#c96079",rate:'10%', rateType:'drop'},
-        {id:3,title:intl.formatMessage({id:'workbench.card.sales.title'}),tag:intl.formatMessage({id:'workbench.card.sales.tag'}),total:'$10933.34',iconName:'payment1',iconColor:"#289cf5",rate:'32%',rateType:'rise'},
+        {id:3,title:intl.formatMessage({id:'workbench.card.sales.title'}),tag:intl.formatMessage({id:'workbench.card.sales.tag'}),total:'$10938.64',iconName:'payment1',iconColor:"#289cf5",rate:'32%',rateType:'rise'},
         {id:4,title:intl.formatMessage({id:'workbench.card.todos.title'}),tag:intl.formatMessage({id:'workbench.card.todos.tag'}),total:'32',iconName:'ring2',iconColor:"#fa583e",rate:'12',rateType:'flag'},
     ]
     
