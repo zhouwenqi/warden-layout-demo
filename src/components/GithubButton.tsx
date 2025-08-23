@@ -6,7 +6,7 @@ const GithubButton=()=>{
     }
     return(
         <ToolbarButton onClick={onClickHandler}>
-            <SvgIcon width={16} height={16} style={{color:"currentcolor",verticalAlign:"middle",height:"16px",width:"16px"}} src="/svg/menu/main-github.svg" />
+            <SvgIcon width={16} height={16} style={{color:"currentColor",verticalAlign:"middle",height:"16px",width:"16px"}} src="/svg/menu/main-github.svg" />
         </ToolbarButton>    
     )
 }

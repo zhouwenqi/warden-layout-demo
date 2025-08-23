@@ -18,7 +18,6 @@ export default ()=>{
         "brandLogo": "svg@/images/logo2.svg",
         "brandTitle": "app.company.brandTitle",
         "rootItemMenuGroup": false,
-        "menuByPrimary": false,
         "logoNavigateRoute": "/company",
         "localeEnabled": true,
         "menuSkin": "blueLattice",

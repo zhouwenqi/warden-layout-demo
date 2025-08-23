@@ -2,7 +2,6 @@ import React from 'react';
 import { Badge, Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
 import { Container } from 'warden-layout/dist/esm';
-import {Icon} from 'umi'
 
 const items: DescriptionsProps['items'] = [
   {

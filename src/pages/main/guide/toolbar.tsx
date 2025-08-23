@@ -88,7 +88,7 @@ return(
                     <pre>
                         {preIconsCode}
                     </pre>
-                    💡建议参考demo来开发，因为这个地方灵活性较大，因为挤乱布局。
+                    💡建议参考demo来开发，因为这个地方灵活性较大，以免挤乱布局。
                 </Paragraph>              
             </Typography>
     )
@@ -118,7 +118,7 @@ return(
                     <pre>
                         {preIconsCode}
                     </pre>
-                    💡It is recommended to refer to the demo for development, as this area has greater flexibility due to the cluttered layout.
+                    💡It is recommended to refer to the demo for development, because this place is more flexible to avoid crowding the layout.
                 </Paragraph>              
             </Typography>
     )

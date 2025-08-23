@@ -15,9 +15,8 @@ const CustomToolbarUserPanel = (props:{popover?:JSX.Element})=>{
     const{token} = useToken()  
     const {config,collapsed} = useConfigContext()
     const user = WardenGlobalThis.currentUser
-    const topDark = config.menuByPrimary && (config.theme == "dark" || config.layoutType == "headMenu")
-
-    console.log(collapsed)
+    const menuBgDark = config.menuBackgroundStyle == "black" || config.menuBackgroundStyle == "primary"
+    const topDark = menuBgDark && (config.theme == "dark" || config.layoutType == "headMenu")
 
     const imgSize = collapsed ? 30 : 90
     let txtStyle = {fontSize:"18px",fontWeight:"500", color:token.colorTextBase}    

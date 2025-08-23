@@ -34,7 +34,6 @@ export default ()=>{
         "brandLogo":"svg@/images/logo2.svg",
         "brandTitle":"app.main.brandTitle",
         "rootItemMenuGroup":false,
-        "menuByPrimary":true,
         "logoNavigateRoute":"/main",
         "localeEnabled":true,
         "menuIconVariant":["-outlined","-filled"]

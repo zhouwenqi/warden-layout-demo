@@ -4,8 +4,8 @@ const DocsPage = () => {
   return (
     <div>
       <TimePicker />
-                  <DatePicker />
-                  <RangePicker />     
+      <DatePicker />
+      <RangePicker />     
     </div>
   );
 };
