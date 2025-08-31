@@ -6,6 +6,7 @@ export default {
   'app.name': '沃登',
   'app.main.brandTitle': '沃登布局演示',
   'app.company.brandTitle': '第二个布局',
+  "app.global.or":"或",
   'app.copyright.info': 'Powered by 2025 © warden.vip',  
   'error.page.404.message': '很抱歉，您访问的页面不存在。',
   'error.page.403.message': '很抱歉，您没有权限访问此页面。',

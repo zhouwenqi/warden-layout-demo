@@ -1,6 +1,6 @@
 import { Col,Row,Card,Space,Flex,theme,Button,Tag, List,Typography,Avatar } from 'antd'
 import {CaretUpOutlined,MoreOutlined,FlagOutlined,CaretDownOutlined} from '@ant-design/icons';
-import {useIntl,getLocale} from 'umi'
+import {useIntl,getLocale,useModel} from 'umi'
 import AppChart from '@/components/AppChart';
 import { hexToRgbaString, useConfigContext } from 'warden-layout/dist/esm';
 const {Text} = Typography;
@@ -8,6 +8,7 @@ const {Text} = Typography;
 const {useToken} = theme
 const GridPanel=()=>{
     const intl = useIntl()
+    const {showDetails} = useModel("useDrawerModel",(model)=>({showDetails:model.showDetails}))
     const data:GridInfo[] = [
         {id:1,title:intl.formatMessage({id:'workbench.card.registrations.title'}),tag:intl.formatMessage({id:'workbench.card.registrations.tag'}),total:'629',iconName:'member1',iconColor:"#61aa4b",rate:'50%',rateType:'rise'},
         {id:2,title:intl.formatMessage({id:'workbench.card.orders.title'}),tag:intl.formatMessage({id:'workbench.card.orders.tag'}),total:'1198',iconName:'order1',iconColor:"#c96079",rate:'10%', rateType:'drop'},
@@ -145,8 +146,8 @@ const GridPanel=()=>{
     
     return(
         <Row>            
-            <TotalCard data={data[0]} memoElement={<div style={chartBoxStyle}><AppChart option={option1} style={{width:"100%",height:"100%"}} /></div>} moreElement={<Button type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>} />
-            <TotalCard data={data[1]} memoElement={<div style={chartBoxStyle}><AppChart style={{width:'100%',height:'100%'}} option={option2} /></div>} moreElement={<Button type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>} />
+            <TotalCard data={data[0]} memoElement={<div style={chartBoxStyle}><AppChart option={option1} style={{width:"100%",height:"100%"}} /></div>} moreElement={<Button onClick={()=>{showDetails()}} type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>} />
+            <TotalCard data={data[1]} memoElement={<div style={chartBoxStyle}><AppChart style={{width:'100%',height:'100%'}} option={option2} /></div>} moreElement={<Button onClick={()=>{showDetails()}} type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>} />
             <TotalCard data={data[2]} memoElement={<div style={chartBoxStyle}><AppChart style={{width:'100%',height:'100%'}} option={option3} /></div>} />
             <TotalCard data={data[3]} memoElement={<img style={{position: "absolute",bottom:"18px",right:"18px", height:"70%"}} src="/images/visitiors.png" alt="visitiors" />} />
             <LogsPanel />
@@ -200,7 +201,7 @@ const LogsPanel=()=>{
     const {config} = useConfigContext()
     const pd = config.compact ? "6px" : "10px"
     const {token} = useToken()
-    
+    const {showDetails} = useModel("useDrawerModel",(model)=>({showDetails:model.showDetails}))
     const cnData = [
         {id:1,name:'Apple',face:'1',createDate:'2022/12/8 23:24',modifyDate:'2022/12/8 23:24',action:'DELETE',terminal:'MOBILE',appType:'IOS',ip:'192.168.4.52',content:(<><Text strong>Apple </Text><Text type="success">审核</Text><Text> 了一张订单： </Text><Text type="secondary">PSN204823422</Text></>)},
         {id:2,name:'Microsoft',face:'2',createDate:'2022/12/8 23:24',modifyDate:'2022/12/8 23:24',action:'DELETE',terminal:'MOBILE',appType:'IOS',ip:'192.168.4.52',content:<><Text strong>Microsoft </Text><Text type="danger">删除</Text><Text> 了订单： </Text><Text type="secondary" delete>PSN49837246</Text></>},
@@ -225,12 +226,12 @@ const LogsPanel=()=>{
     const cardClass = config.backgroundBlur ? "warden-layout-blur" : "" 
     return(
         <Col span={24}>
-            <Card className={cardClass} style={{margin:pd,background:bgColor}} bordered={!config.hideBorder} title={intl.formatMessage({id:'workbench.card.logs.title'})}  extra={<Button type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>}>
+            <Card className={cardClass} style={{margin:pd,background:bgColor}} bordered={!config.hideBorder} title={intl.formatMessage({id:'workbench.card.logs.title'})}  extra={<Button onClick={()=>{showDetails()}} type="text" style={{padding:"8px",margin:"0px"}}><MoreOutlined /></Button>}>
             <List itemLayout="horizontal" dataSource={data} renderItem={(item)=>(
-                <List.Item actions={[<a>{intl.formatMessage({id:'global.button.view'})}</a>]}>
+                <List.Item actions={[<a onClick={()=>{showDetails()}}>{intl.formatMessage({id:'global.button.view'})}</a>]}>
                 <List.Item.Meta
                 avatar={<Avatar size={30} src={"https://api.dicebear.com/7.x/miniavs/svg?seed=" + item.face} alt={item.name} />}
-                title={<a>{item.name}</a>}
+                title={<a onClick={()=>{showDetails()}}>{item.name}</a>}
                 description={item.createDate}  
                 key={item.id}          
                 />          

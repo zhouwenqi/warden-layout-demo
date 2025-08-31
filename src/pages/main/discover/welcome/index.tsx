@@ -21,7 +21,7 @@ const WeblcomePanel: React.FC = () => {
   const {config} = useConfigContext()
   const intl = useIntl()
   const user = WardenGlobalThis.currentUser
-  const pd = config.compact ? "6px" : "10px"  
+  const pd = config.compact ? "6px" : "10px" 
 
   const hour = dayjs().hour()    
     var weltag = ''

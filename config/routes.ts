@@ -7,6 +7,7 @@ export default [
     { path: "/docs", component: "docs", name:"Docs" },
     { path: "/404", component: "404", layout:false},
     { path: "/403", component: "403", layout:false},
+    { path: "/login", component: "login"},
     { path: "/main", component:"@/layouts/main", name:"Main", routes:[
         { path: "/main/", redirect:"/main/discover"},             
         { path: "/main/discover", name:"Discover", icon:"svg@/svg/menu/main-discover", routes:[

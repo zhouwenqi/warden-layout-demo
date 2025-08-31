@@ -23,4 +23,18 @@ export default {
     'skin.greenMountain.label':'翡翠绿峰',
     'skin.paintSplashing.label':'流光溢彩',
     'skin.orangeBubble.label':'香橙泡泡',
+    'drawer.demo.title':'只为演示布局',
+    'drawer.demo.user.title':'用户信息',
+    'drawer.demo.user.label.product':'产品',
+    'drawer.demo.user.label.billing.mode':'计费模式',
+    'drawer.demo.user.label.automatic.renewal':'自动续订',
+    'drawer.demo.user.label.order.time':'下单时间',
+    'drawer.demo.user.label.usage.time':'使用时间',
+    'drawer.demo.user.label.status':'状态',
+    'drawer.demo.user.label.negotiated.amount':'协商金额',
+    'drawer.demo.user.label.discount':'折扣',
+    'drawer.demo.user.label.official.receipts':'正式收据',
+    'drawer.demo.user.label.config.info':'配置信息',
+    'drawer.demo.user.button.edit':'编辑',
+   
 };

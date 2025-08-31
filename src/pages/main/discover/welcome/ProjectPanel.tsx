@@ -1,6 +1,6 @@
 import { Button, Card,List,theme } from "antd"
 import {MoreOutlined,TeamOutlined} from "@ant-design/icons"
-import {useIntl,getLocale} from "umi"
+import {useIntl,getLocale,useModel} from "umi"
 import { hexToRgbaString, useConfigContext } from "warden-layout"
 
 const {useToken} = theme
@@ -9,6 +9,7 @@ const ProjectPanel=()=>{
     const {config} = useConfigContext()
     const locale = getLocale()
     const intl = useIntl()
+    const {showDetails} = useModel("useDrawerModel",(model)=>({showDetails:model.showDetails}))
     const {token} = useToken()
     const projectData = locale == "en-US" ? [
         {id:'1',name:'Calf school',code:'P208823',color:'#ff6600',icon:'/svg/project/p1.svg',createDate:'2022/12/8 23:22',description:'Creating value for corporate customers is the pursuit of the calf academy all along...',memberCount:4,speedCount:86,testCount:19},
@@ -32,12 +33,12 @@ const ProjectPanel=()=>{
     const cardClass = config.backgroundBlur ? "warden-layout-blur" : "" 
 
     return(       
-        <Card className={cardClass} bordered={!config.hideBorder} style={{margin:"8px",background:bgColor}} title={intl.formatMessage({id:'workbench.card.projects.title'})} extra={<Button type="text" style={{padding:btnPd,margin:"0px"}}><MoreOutlined /></Button>}>
+        <Card className={cardClass} bordered={!config.hideBorder} style={{margin:"8px",background:bgColor}} title={intl.formatMessage({id:'workbench.card.projects.title'})} extra={<Button type="text" style={{padding:btnPd,margin:"0px"}}><MoreOutlined onClick={()=>{showDetails()}} /></Button>}>
             <List itemLayout="horizontal" dataSource={projectData} renderItem={(item)=>(
-            <List.Item actions={[<TeamIcon text={''+item.memberCount} />]}>
+            <List.Item actions={[<TeamIcon  onClick={()=>{showDetails()}} text={''+item.memberCount} />]}>
               <List.Item.Meta
               avatar={<img style={{width:iconSize,height:iconSize}} src={item.icon} alt={item.name} />}
-              title={<a>{item.name}</a>}
+              title={<a onClick={()=>{showDetails()}}>{item.name}</a>}
               description={item.description}
               key={item.id}      
             />
@@ -47,9 +48,9 @@ const ProjectPanel=()=>{
         </Card>
     )
 }
-const TeamIcon=(props:{text:string})=>{
+const TeamIcon=(props:{text:string,onClick:Function})=>{
     return(
-        <Button style={{opacity:"0.5"}} color="default" type="text" icon={<TeamOutlined />}>{props.text}</Button>
+        <Button style={{opacity:"0.5"}} color="default" type="text" icon={<TeamOutlined />} >{props.text}</Button>
     )
 }
 export default ProjectPanel

@@ -1,6 +1,6 @@
 import { Avatar, Button , Divider, Flex, Space, Tag, theme, Popover, Typography , Tooltip } from "antd"
 import {EditOutlined,EllipsisOutlined,LogoutOutlined} from '@ant-design/icons'
-import {useIntl} from 'umi'
+import {useIntl,history} from 'umi'
 import { WardenGlobalThis,useConfigContext } from "warden-layout";
 const { Title, Paragraph, Text } = Typography;
 
@@ -65,6 +65,12 @@ const UserPopoverPanel=()=>{
     const onClickHandler=()=>{
         setAvatarPopoverOpen(false)
     }
+
+    const onExitHandler=()=>{
+        setAvatarPopoverOpen(false)
+        history.push("/login")
+    }
+
     return(
         <div>
             <Flex>
@@ -93,7 +99,7 @@ const UserPopoverPanel=()=>{
                     <Button onClick={onClickHandler} type="text"><EditOutlined /></Button>
                 </Tooltip>
                 <Tooltip title={intl.formatMessage({id:"global.button.exit"})}>
-                    <Button onClick={onClickHandler} type="text"><LogoutOutlined /></Button>
+                    <Button onClick={onExitHandler} type="text"><LogoutOutlined /></Button>
                 </Tooltip>
                 <Tooltip title={intl.formatMessage({id:"global.button.more"})}>
                     <Button onClick={onClickHandler} type="text"><EllipsisOutlined /></Button>

@@ -3,3 +3,8 @@ declare interface AppChartProps extends React.HTMLAttributes<HTMLDivElement> {
     finished?:Function
     option?:any
 }
+declare interface IDrawerProps<T> {
+    open:boolean;    
+    setOpen:Function;
+    record?:T;
+}

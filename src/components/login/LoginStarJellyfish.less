@@ -1,0 +1,280 @@
+body{
+    padding:0;
+    margin:0;
+}
+
+
+.loginNormalBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;  
+}
+
+.loginCardBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;      
+    background-color:rgba(0, 0, 0, 0.3);   
+    border:solid 1px rgba(255,255,255,0.1); 
+    -webkit-transform: translateZ(0);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateZ(0);
+    backdrop-filter: blur(8px);  
+    border-radius: 18px;
+}
+
+.formCardBox{    
+    width: 1000px;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin:20px;
+}
+
+.formNormalBox{    
+    background-color: rgba(20, 20, 20, 0.6);  
+    border:solid 1px rgba(255,255,255,0.1);
+    -webkit-transform: translateZ(0);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateZ(0);
+    backdrop-filter: blur(8px);  
+    border-radius: 10px;
+    width:400px;
+    box-shadow: 0 0 15px #0000000d;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: stretch;
+    padding:40px 0px 10px 0px;
+}
+.fullBox{
+    display: flex;
+    justify-items: center;
+    height: 100%;
+}
+.fullLeft{
+    width:50%;  
+    flex:1;  
+    color:#cfe3f6;
+    background-image: url("/images/login/star_jellyfish_mask_2.png");    
+    background-repeat: no-repeat;
+    background-position: -200px 0px;
+    background-color: #000;   
+
+    
+}
+.fullRight{
+    width:50%;  
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.fullFormBox {
+    display: flex;   
+    justify-content: center;
+}
+.fullLoginForm{
+    width:45%;
+}
+
+.formLeft{
+    width: 50%;
+    background-clip: border-box;
+    background-size: cover;
+    border-radius: 10px;
+    overflow: hidden;    
+}
+
+.formRight{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    
+}
+
+.loginNormalTitle {
+    width:581px;
+    text-align: center;
+    color: #999;
+    margin-bottom: 20px;
+    h2{
+        margin:0;
+        font-weight: 400;
+    }
+    h3{
+        margin:0;
+        font-weight: 300;
+        color: #444;
+    }
+   
+    
+}
+
+.loginCardTitle {
+    text-align: center;
+    color: #999;
+    h2{
+        margin:0;
+        font-weight: 500;
+    }
+    h3{
+        margin:0;
+        font-weight: 400;
+        color: #444;
+    }
+    margin-bottom: 40px;
+}
+
+.loginFullTitle {
+    text-align: center;
+    color: #999;
+    margin-bottom: 20px;
+    h2{
+        margin:0;
+        font-weight: 500;
+    }
+    h3{
+        margin:0;
+        font-weight: 400;
+        color: #444;
+    }
+}
+
+
+@media screen and (max-width: 1200px){
+    .formCardBox{
+        width: 1000px;
+        height: 700px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        margin:20px;
+               
+    }
+    .formLeft{
+        width: 50%;
+        background-clip: border-box;
+        background-size: cover;
+        border-radius: 10px;
+        overflow: hidden;        
+    }    
+    .formRight{
+        flex:1;
+        border-radius: 10px;
+    }
+    .fullLoginForm{
+        width:45%;
+    }
+    .loginCardTitle {
+    text-align: center;
+    color: #999;
+    h2{
+        margin:0;
+        font-weight: 500;
+    }
+    h3{
+        margin:0;
+        font-weight: 400;
+        color: #444;
+    }
+    margin-bottom: 40px;
+}
+}
+@media screen and (max-width: 1000px){
+    .formCardBox{
+        width: 800px;
+        height: 400px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        margin:14px;
+    }
+    .formLeft{
+        width: 50%;
+        background-clip: border-box;
+        background-size: cover;
+        border-radius: 8px;
+        overflow: hidden;        
+    }    
+    .formRight{
+        flex:1;
+        border-radius: 8px;
+    }
+    .fullLoginForm{
+        width:65%;
+    }
+    .loginCardTitle {
+    text-align: center;
+    color: #999;
+    h2{
+        margin:0;
+        font-weight: 500;
+    }
+    h3{
+        margin:0;
+        font-weight: 400;
+        color: #444;
+    }
+    margin-bottom: 30px;
+}
+}
+@media screen and (max-width: 700px){
+    .formCardBox{
+        width: 500px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        margin:10px;
+    }
+    .formLeft{
+        flex:1;
+        width:100%;
+        background-clip: border-box;
+        background-size: cover;
+        border-radius: 6px;
+        overflow: hidden;        
+    }    
+    .formRight{
+        flex:1;
+        border-radius:6px;
+    }
+    .fullLoginForm{
+        width:80%;
+    }
+    .loginCardTitle {
+        text-align: center;
+        color: #999;
+        h2{
+            margin:0;
+            font-weight: 400;
+        }
+        h3{
+            margin:0;
+            font-weight: 300;
+            color: #444;
+        }
+        margin-bottom: 20px;
+    }
+}
+
+.loginForm{
+    width:70%;
+}

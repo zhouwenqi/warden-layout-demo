@@ -13,7 +13,10 @@ export default defineConfig({
   icons:{
     include:[
       "local:scale",
-      "local:wallet"
+      "local:wallet",
+      "local:user-outlined",
+      "local:lock-closed-outlined",
+      "local:variable"
     ]
   },
   locale:{
@@ -29,6 +32,7 @@ export default defineConfig({
   headScripts:[{ src: '/scripts/loading.js', async: true }],
   define:{
     "process.env.ENABLE_SETTING":process.env.ENABLE_SETTING,
-    "process.env.ENABLE_CONFIG_STORAGE":process.env.ENABLE_CONFIG_STORAGE
+    "process.env.ENABLE_CONFIG_STORAGE":process.env.ENABLE_CONFIG_STORAGE,
+    'process.env.API_URI':process.env.API_URI
   }  
 });

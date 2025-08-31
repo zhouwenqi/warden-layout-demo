@@ -36,7 +36,6 @@ const defaultSkins:Warden.IMenuSkin[]=[
         theme:"light",
         primaryColor:"#4e9c48",
         layoutType:"leftMenu",
-        menuByPrimary:false,
         name:"greenMountain",
         label:"greenMountain",
         backgroundImage:"/images/skins/green-mountain-bg.jpg",
@@ -45,7 +44,6 @@ const defaultSkins:Warden.IMenuSkin[]=[
     {
         theme:"light",
         primaryColor:"#09a7e1",
-        menuByPrimary:false,
         name:"paintSplashing",
         label:"paintSplashing",
         backgroundImage:"/images/skins/paint-splashing-bg-top.jpg,/images/skins/paint-splashing-bg-left.jpg",
@@ -55,7 +53,6 @@ const defaultSkins:Warden.IMenuSkin[]=[
         theme:"light",
         primaryColor:"#eb591d",
         layoutType:"leftMenu",
-        menuByPrimary:false,
         name:"orangeBubble",
         label:"orangeBubble",
         backgroundImage:"/images/skins/orange-bubble-bg.jpg",
@@ -65,7 +62,6 @@ const defaultSkins:Warden.IMenuSkin[]=[
         theme:"dark",
         primaryColor:"#3987df",
         name:"starJellyfish",
-        menuByPrimary:false,
         label:"starJellyfish",
         backgroundImage:"/images/skins/star-jellyfish-bg.jpg",
         icon:"/images/skins/star-jellyfish-small.jpg"

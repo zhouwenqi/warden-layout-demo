@@ -23,5 +23,17 @@ export default {
     'skin.greenMountain.label':'Jade Mountain',
     'skin.paintSplashing.label':'Splashing',
     'skin.orangeBubble.label':'Orange bubbles',
-    
+    'drawer.demo.title':'Layout for demonstration only',
+    'drawer.demo.user.title':'User Info',
+    'drawer.demo.user.label.product':'Product',
+    'drawer.demo.user.label.billing.mode':'Billing Mode',
+    'drawer.demo.user.label.automatic.renewal':'Automatic Renewal',
+    'drawer.demo.user.label.order.time':'Order Time',
+    'drawer.demo.user.label.usage.time':'Usage Time',
+    'drawer.demo.user.label.status':'Status',
+    'drawer.demo.user.label.negotiated.amount':'Negotiated Amount',
+    'drawer.demo.user.label.discount':'Discount',
+    'drawer.demo.user.label.official.receipts':'Official receipts',
+    'drawer.demo.user.label.config.info':'Config Info',
+    'drawer.demo.user.button.edit':'Edit', 
 };
