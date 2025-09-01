@@ -1,20 +1,28 @@
 import styled from "styled-components";
 import styles from "./LoginBlueLattice.less";
-import { Carousel,Flex, Form, Input, Button, Divider } from 'antd';
+import { Flex, Form, Input, Button, Divider } from 'antd';
 import {useIntl,Icon} from 'umi';
-import { CopyRight } from "./LoginElements";
+import { CopyRight, LoginLazyBox } from "./LoginElements";
 
 const LoginBlueLattice=(props:LoginBoxProps)=>{
     const intl = useIntl()    
     const onFinishHandler=(values:any)=>{
         props.onLogin!(values)        
-    }
-    
+    }    
 
     let panel = (                
                 <>
-                <MaskBox>
-                </MaskBox>                
+                <LoginLazyBox backimgUrl="/images/login/lattice_mask_4.png" style={{
+                    left:"0px",
+                    top:"0px",
+                    right:"0px",
+                    bottom: "0px",
+                    overflow: "hidden",
+                    position:"absolute",    
+                    backgroundPosition: "center center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "600px"
+                }} />               
                 <div className={styles.loginNormalBox}>
                 <div className={styles.loginNormalTitle}>
                     <img src="/images/login/lattice_logo.png" style={{width:"100px",height:"100px"}} alt="logo" />
@@ -75,7 +83,6 @@ const LoginBlueLattice=(props:LoginBoxProps)=>{
     )
 }
 
-
 const BodyBox=styled.div`
     display: flex;
     justify-content: center;
@@ -83,18 +90,7 @@ const BodyBox=styled.div`
     min-height: 100vh;
     background-color: #e7e8ec;    
 `;
-const MaskBox=styled.div`
-    left:0px;
-    top:0px;
-    right:0px;
-    bottom: 0px;
-    overflow: hidden;
-    position: absolute;    
-    background-image: url("/images/login/lattice_mask_4.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 600px;
-`;
+
 
 const PrimaryButton = styled(Button)`
     background: transparent;

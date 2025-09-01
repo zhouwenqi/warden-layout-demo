@@ -2,7 +2,7 @@ import styled from "styled-components";
 import styles from "./LoginOrangeBubble.less";
 import { Carousel,Flex, Form, Input, Button, Divider } from 'antd';
 import {useIntl,Icon} from 'umi';
-import { CopyRight } from "./LoginElements";
+import { CopyRight, LoginLazyBox, SpinBox, useLazyImages } from "./LoginElements";
 
 const LoginOrangeBubble=(props:LoginBoxProps)=>{
     const intl = useIntl()    
@@ -10,6 +10,7 @@ const LoginOrangeBubble=(props:LoginBoxProps)=>{
         props.onLogin!(values)        
     }
     
+    const {loading} = useLazyImages(["/images/login/orange_bubble_frame_1.png","/images/login/orange_bubble_frame_2.png","/images/login/orange_bubble_frame_3.png"])
 
     let panel = (                
                 <>
@@ -69,16 +70,27 @@ const LoginOrangeBubble=(props:LoginBoxProps)=>{
         panel = (              
                 <>
                 <MaskBox>
+                    <LoginLazyBox backimgUrl="/images/skins/orange-bubble-bg.jpg" style={{
+                        left:"0px",
+                        top:"0px",
+                        right:"0px",
+                        bottom: "0px",
+                        overflow: "hidden",
+                        position: "absolute",        
+                        backgroundRepeat: "no-repeat",
+                    }} />
+                    <BodyBlurBox />
                 </MaskBox>
                 <div className={styles.loginCardBox}>
                 
                 <div className={styles.formCardBox}>
                     <div className={styles.formLeft}>
+                        {loading ? <SpinBox /> :
                         <Carousel fade={true} effect="fade" dotPosition="bottom" autoplay={true}>
                             <img src="/images/login/orange_bubble_frame_1.png" alt="1" />
                             <img src="/images/login/orange_bubble_frame_2.png" alt="2" /> 
                             <img src="/images/login/orange_bubble_frame_3.png" alt="2" /> 
-                        </Carousel>
+                        </Carousel>}
                     </div>
                     <div className={styles.formRight}>    
                         <div className={styles.loginCardTitle}>
@@ -155,16 +167,7 @@ const MaskBox=styled.div`
     overflow: hidden;
     position: absolute;    
 `;
-const BodyBackground=styled.div`
-    left:0px;
-    top:0px;
-    right:0px;
-    bottom: 0px;
-    overflow: hidden;
-    position: absolute;     
-    background-image: url("/images/skins/orange-bubble-bg.jpg");      
-    background-repeat: no-repeat;   
-`;
+
 const BodyBlurBox=styled.div`
     width:100%;
     height:100%;
@@ -174,45 +177,6 @@ const BodyBlurBox=styled.div`
     transform: translateZ(0);
     backdrop-filter: blur(8px);  
 `
-
-const FullLayoutBottom=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:380px; 
-    text-align:right;  
-    left:0px;
-    bottom:0px;
-    background-image: url("/images/login/splashing_mask_10.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.9);
-    transform-origin: bottom center;
-`;
-const FullLeftRight=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:517px;   
-    left:0px;
-    bottom:0px;
-    background-image: url("/images/login/blue_sky_mask_2.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.9);
-    transform-origin: bottom right;
-`;
-
-const FullLeftPeople=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:314px;   
-    left:90px;    
-    bottom:-30px;
-    background-image: url("/images/login/splashing_mask_9.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.8);    
-    transform-origin: bottom right;
-`;
 
 const PrimaryButton = styled(Button)`
     background: transparent;

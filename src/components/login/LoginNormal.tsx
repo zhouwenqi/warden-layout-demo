@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import styles from "./LoginNormal.less";
-import { Carousel,Flex, Form, Input, Button, Divider,theme } from 'antd';
+import { Carousel,Flex, Form, Input, Button, Divider,theme, Spin } from 'antd';
 import {useIntl,Icon} from 'umi';
-import { CopyRight } from "./LoginElements";
+import { CopyRight, LoginLazyBox, SpinBox, useLazyImages } from "./LoginElements";
 import { SvgIcon } from "warden-layout";
 const {useToken} = theme
 
@@ -12,8 +12,9 @@ const LoginNormal=(props:LoginBoxProps)=>{
     const onFinishHandler=(values:any)=>{
         props.onLogin!(values)        
     }
-    console.log(token.colorPrimary)
 
+    const {loading:asLoading} = useLazyImages(["/images/login/normal_frame_1.png","/images/login/normal_frame_2.png","/images/login/normal_frame_3.png"])
+    const {loading:leftMaskLoading} = useLazyImages(["/images/login/splashing_mask_8.png","/images/login/splashing_mask_11.png"])
 
     let panel = (                
                 <>
@@ -78,7 +79,8 @@ const LoginNormal=(props:LoginBoxProps)=>{
                 
                 <div className={styles.formCardBox}>
                     <div className={styles.formLeft}>
-                        <Carousel fade={true} effect="fade" dotPosition="bottom" autoplay={true}>
+                        {asLoading ? <SpinBox /> :
+                        <Carousel fade={true} effect="fade" dotPosition="bottom" autoplay={true}>                            
                             <AdBoxGradient $color2={token.colorPrimaryHover} $color1={token.colorPrimaryActive}>
                                 <img src="/images/login/normal_frame_1.png" alt="1" />
                             </AdBoxGradient>
@@ -89,6 +91,7 @@ const LoginNormal=(props:LoginBoxProps)=>{
                                 <img src="/images/login/normal_frame_3.png" alt="2" /> 
                             </AdBoxSolid>
                         </Carousel>
+                        }
                     </div>
                     <div className={styles.formRight}>    
                         <div className={styles.loginCardTitle}>
@@ -142,21 +145,44 @@ const LoginNormal=(props:LoginBoxProps)=>{
             </>)
     } else if(props.layoutType=="fullColumn"){
             panel = (<MaskBox style={{background:token.colorBgLayout}}> 
-                    <FullLeftRight />  
-                    <FullLayoutBottom>
+                    <LoginLazyBox backimgUrl="/images/login/blue_sky_mask_2.png" style={{
+                        position:"absolute",  
+                        width:"50%",
+                        height:"517px", 
+                        left:"0px",
+                        bottom:"0px", 
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "bottom right",
+                        transform: "scale(0.9)",
+                        transformOrigin: "bottom right"
+                    }} />
+ 
+                    <LoginLazyBox backimgUrl="/images/login/splashing_mask_10.png" style={{
+                            position:"absolute",  
+                            width:"50%",
+                            height:"380px", 
+                            textAlign:"right",  
+                            left:"0px",
+                            bottom:"0px", 
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "bottom right",
+                            transform: "scale(0.9)",
+                            transformOrigin: "bottom center"
+                        }}>
                         <label style={{fontSize:"60px",color:"white"}}>Rich layout styles</label><br />
                         <label style={{fontSize:"36px",color:"white",opacity:"0.7",lineHeight:"40px"}}>Multi tenant</label><br />
                         <label style={{fontSize:"36px",color:"white",opacity:"0.7",lineHeight:"40px"}}>SpringCloud + React</label><br />
-                    </FullLayoutBottom>     
+                    </LoginLazyBox>     
                     <>
                     <div className={styles.fullBox}>
                         <FillLeftBox className={styles.fullLeft} $color1={token.colorPrimaryHover} $color2={token.colorPrimary}>                        
+                            {leftMaskLoading ? <></> :
                             <div style={{padding:"40px"}}>
                                 <label style={{fontSize:"96px",lineHeight:"100px"}}>320+</label><br />
                                 <label style={{fontSize:"24px",opacity:"0.7"}}>Colorful theme styles</label><br />
                                 <img style={{display:"inline-block",marginTop:"20px",marginRight:"20px"}} src="/images/login/splashing_mask_8.png" alt="warden theme" />
                                 <img style={{display:"inline-block",marginTop:"20px",opacity:"0.4"}} src="/images/login/splashing_mask_11.png" alt="warden charts" />
-                            </div>                        
+                            </div>}
                         </FillLeftBox>
                         <div className={styles.fullRight}>
                             <div className={styles.loginFullTitle}>
@@ -242,19 +268,19 @@ const AdBoxGradient=styled.div<{$color1?:string, $color2?: string}>`
 const FillLeftBox=styled.div<{$color1?:string, $color2?: string}>`  
     background: linear-gradient(135deg, ${props=>props.$color1}, ${props=>props.$color2});
 `;
-const FullLayoutBottom=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:380px; 
-    text-align:right;  
-    left:0px;
-    bottom:0px;
-    background-image: url("/images/login/splashing_mask_10.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.9);
-    transform-origin: bottom center;
-`;
+
+const box = <LoginLazyBox backimgUrl="/images/login/blue_sky_mask_2.png" style={{
+    position:"absolute",  
+    width:"50%",
+    height:"517px", 
+    left:"0px",
+    bottom:"0px", 
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "bottom right",
+    transform: "scale(0.9)",
+    transformOrigin: "bottom right"
+}} />
+
 const FullLeftRight=styled.div`  
     position:absolute;  
     width:50%;

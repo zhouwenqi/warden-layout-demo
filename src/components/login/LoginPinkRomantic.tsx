@@ -2,7 +2,7 @@ import styled from "styled-components";
 import styles from "./LoginPinkRomantic.less";
 import { Carousel,Flex, Form, Input, Button, Divider } from 'antd';
 import {useIntl,Icon} from 'umi';
-import { CopyRight } from "./LoginElements";
+import { CopyRight, LoginLazyBox, SpinBox, useLazyImages } from "./LoginElements";
 
 const LoginPinkRomantic=(props:LoginBoxProps)=>{
     const intl = useIntl()    
@@ -10,7 +10,19 @@ const LoginPinkRomantic=(props:LoginBoxProps)=>{
         props.onLogin!(values)        
     }
 
-    let panel = (<MaskBox>
+    const {loading} = useLazyImages(["/images/login/pink_romantic_frame_1.png","/images/login/pink_romantic_frame_2.png","/images/login/pink_romantic_frame_3.png"])
+
+    let panel = (<LoginLazyBox backimgUrl="/images/login/pink_romantic_mask_1.png" style={{
+                    left:"0px",
+                    top:"0px",
+                    right:"0px",
+                    bottom:"0px",
+                    overflow:"hidden",
+                    position:"absolute",  
+                    backgroundPosition:"center center",
+                    backgroundRepeat:"no-repeat",
+                    backgroundSize:"600px",
+                }}>
                 <>
                 <div className={styles.loginBox}>
                 <div className={styles.loginNormalTitle}>
@@ -60,7 +72,7 @@ const LoginPinkRomantic=(props:LoginBoxProps)=>{
                 <CopyRight />
             </div>
             </>
-        </MaskBox>)
+        </LoginLazyBox>)
     
     if(props.layoutType=="cardColumn"){
         panel = (<MaskBox>               
@@ -73,11 +85,12 @@ const LoginPinkRomantic=(props:LoginBoxProps)=>{
                 </div>
                 <div className={styles.formCardBox}>
                     <div className={styles.formLeft}>
+                        {loading ? <SpinBox /> :
                         <Carousel effect="fade" dotPosition="bottom" autoplay={true}>
                             <img src="/images/login/pink_romantic_frame_1.png" alt="1" />
                             <img src="/images/login/pink_romantic_frame_2.png" alt="2" /> 
                             <img src="/images/login/pink_romantic_frame_3.png" alt="3" />
-                        </Carousel>
+                        </Carousel>}
                     </div>
                     <div className={styles.formRight}>                        
                         <Form
@@ -141,6 +154,7 @@ const BodyBox=styled.div`
     min-height: 100vh;
     background-color: #eef1f7;
 `;
+
 const MaskBox=styled.div`
     left:0px;
     top:0px;

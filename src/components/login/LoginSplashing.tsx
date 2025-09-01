@@ -2,7 +2,7 @@ import styled from "styled-components";
 import styles from "./LoginSplashing.less";
 import { Carousel,Flex, Form, Input, Button, Divider } from 'antd';
 import {useIntl,Icon} from 'umi';
-import { CopyRight } from "./LoginElements";
+import { CopyRight, LoginLazyBox, SpinBox, useLazyImages } from "./LoginElements";
 
 const LoginSplashing=(props:LoginBoxProps)=>{
     const intl = useIntl()    
@@ -10,10 +10,40 @@ const LoginSplashing=(props:LoginBoxProps)=>{
         props.onLogin!(values)        
     }
 
+    const {loading:adLoading} = useLazyImages(["/images/login/splashing_frame_1.png","/images/login/splashing_frame_2.png","/images/login/splashing_frame_3.png"])
+    const {loading:leftMaskLoading} = useLazyImages(["/images/login/splashing_mask_8.png","/images/login/splashing_mask_11.png","/images/login/splashing_mask_12.png"])
+
     let panel = (<MaskBox>
-                <MaskTopLeft />
-                <MaskLeftBottom />
-                <MaskTopRight />
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_3.png" style={{
+                    position:"absolute",
+                    width:"160px",
+                    height:"465px",
+                    top:"0px",
+                    left:"0px",
+                    backgroundRepeat: "no-repeat",
+                    transform: "scale(0.6)",
+                    transformOrigin: "top left"
+                }} />
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_4.png" style={{
+                    position:"absolute",
+                    width:"736px",
+                    height:"156px",
+                    bottom:"0px",
+                    left:"0px",
+                    backgroundRepeat: "no-repeat",
+                    transform: "scale(0.6)",
+                    transformOrigin: "bottom left"
+                }} />
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_5.png" style={{
+                    position:"absolute",
+                    width:"384px",
+                    height:"536px",
+                    top:"0px",
+                    right:"0px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top right",
+                    transform: "scale(0.6)",
+                }} />
                 <>
                 <div className={styles.loginBox}>
                 <div className={styles.loginNormalTitle}>
@@ -67,9 +97,38 @@ const LoginSplashing=(props:LoginBoxProps)=>{
     
     if(props.layoutType=="cardColumn"){
         panel = (<MaskBox>
-                <MaskTopLeft />
-                <MaskLeftBottom />
-                <MaskTopRight />                
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_3.png" style={{
+                    position:"absolute",
+                    width:"160px",
+                    height:"465px",
+                    top:"0px",
+                    left:"0px",
+                    backgroundRepeat: "no-repeat",
+                    transform: "scale(0.6)",
+                    transformOrigin: "top left"
+                }} />
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_4.png" style={{
+                    position:"absolute",
+                    width:"736px",
+                    height:"156px",
+                    bottom:"0px",
+                    left:"0px",
+                    backgroundRepeat: "no-repeat",
+                    transform: "scale(0.6)",
+                    transformOrigin: "bottom left"
+                }} />
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_5.png" style={{
+                    position:"absolute",
+                    width:"384px",
+                    height:"536px",
+                    top:"0px",
+                    right:"0px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top right",
+                    transform: "scale(0.6)",
+                    transformOrigin: "top right"
+
+                }} />               
                 <>
                 <div className={styles.loginBox}>
                 <div className={styles.loginCardTitle}>
@@ -79,11 +138,12 @@ const LoginSplashing=(props:LoginBoxProps)=>{
                 </div>
                 <div className={styles.formCardBox}>
                     <div className={styles.formLeft}>
+                        {adLoading ? <SpinBox /> :
                         <Carousel effect="fade" dotPosition="bottom" autoplay={true}>
                             <img src="/images/login/splashing_frame_1.png" alt="1" />
                             <img src="/images/login/splashing_frame_2.png" alt="2" /> 
                             <img src="/images/login/splashing_frame_3.png" alt="3" />
-                        </Carousel>
+                        </Carousel>}
                     </div>
                     <div className={styles.formRight}>                        
                         <Form
@@ -133,23 +193,67 @@ const LoginSplashing=(props:LoginBoxProps)=>{
         </MaskBox>)
     }else if(props.layoutType=="fullColumn"){
         panel = (<MaskBox> 
-                <MaskTopRight />                
-                <FullLeftRight />  
-                <FullLayoutBottom>
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_5.png" style={{
+                    position:"absolute",
+                    width:"384px",
+                    height:"536px",
+                    top:"0px",
+                    right:"0px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top right",
+                    transform: "scale(0.6)",
+                    transformOrigin: "top right"
+                }} />               
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_7.png" style={{
+                    position:"absolute",
+                    width:"50%",
+                    height:"517px",
+                    left:"0px",
+                    bottom:"0px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "bottom right",
+                    transform: "scale(0.9)",
+                    transformOrigin: "bottom right"
+                }} />  
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_10.png" style={{
+                    position:"absolute",
+                    width:"50%",
+                    height:"380px",
+                    textAlign:"right",  
+                    left:"0px",
+                    bottom:"0px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "bottom right",
+                    transform: "scale(0.9)",
+                    transformOrigin: "bottom center"
+                }}>
                     <label style={{fontSize:"60px",color:"white"}}>Rich layout styles</label><br />
                     <label style={{fontSize:"36px",color:"white",opacity:"0.7",lineHeight:"40px"}}>Multi tenant</label><br />
                     <label style={{fontSize:"36px",color:"white",opacity:"0.7",lineHeight:"40px"}}>SpringCloud + React</label><br />
-                </FullLayoutBottom>          
-                <FullLeftPeople />
+                </LoginLazyBox>          
+                <LoginLazyBox backimgUrl="/images/login/splashing_mask_9.png" style={{
+                    position:"absolute",
+                    width:"50%",
+                    height:"314px",
+                    left:"90px",
+                    bottom:"-30px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "bottom right",
+                    transform: "scale(0.8)",
+                    transformOrigin: "bottom right"
+                }} />
                 <>
                 <div className={styles.fullBox}>
-                    <div className={styles.fullLeft}>                        
+                    <div className={styles.fullLeft}> 
+                        {leftMaskLoading ? <></> : 
+                        <div className={styles.fullLeftBox}>                
                         <div style={{padding:"40px"}}>
                             <label style={{fontSize:"96px",lineHeight:"100px"}}>320+</label><br />
                             <label style={{fontSize:"24px",opacity:"0.7"}}>Colorful theme styles</label><br />
                             <img style={{display:"inline-block",marginTop:"20px",marginRight:"20px"}} src="/images/login/splashing_mask_8.png" alt="warden theme" />
                             <img style={{display:"inline-block",marginTop:"20px",opacity:"0.4"}} src="/images/login/splashing_mask_11.png" alt="warden charts" />
-                        </div>                        
+                        </div>  
+                        </div>}   
                     </div>
                     <div className={styles.fullRight}>
                         <div className={styles.loginCardTitle}>
@@ -203,8 +307,7 @@ const LoginSplashing=(props:LoginBoxProps)=>{
                 </div>
                 </>
         </MaskBox>)
-    }
-        
+    } 
 
     return(
         <BodyBox>
@@ -230,79 +333,6 @@ const MaskBox=styled.div`
     position: absolute;    
 `;
 
-const MaskTopLeft=styled.div`
-    position:absolute;
-    width:160px;
-    height:465px;
-    top:0px;
-    left:0px;
-    background-image: url("/images/login/splashing_mask_3.png");
-    background-repeat: no-repeat;
-    transform: scale(0.6);
-    transform-origin: top left;
-`;
-const MaskLeftBottom=styled.div`
-    position:absolute;
-    width:736px;
-    height:156px;
-    bottom:0px;
-    left:0px;
-    background-image: url("/images/login/splashing_mask_4.png");    
-    background-repeat: no-repeat;
-    transform: scale(0.6);
-    transform-origin: bottom left;
-`;
-
-const FullLayoutBottom=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:380px; 
-    text-align:right;  
-    left:0px;
-    bottom:0px;
-    background-image: url("/images/login/splashing_mask_10.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.9);
-    transform-origin: bottom center;
-`;
-const FullLeftRight=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:517px;   
-    left:0px;
-    bottom:0px;
-    background-image: url("/images/login/splashing_mask_7.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.9);
-    transform-origin: bottom right;
-`;
-
-const FullLeftPeople=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:314px;   
-    left:90px;
-    bottom:-30px;
-    background-image: url("/images/login/splashing_mask_9.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.8);
-    transform-origin: bottom right;
-`;
-
-const MaskTopRight=styled.div`
-    position:absolute;
-    width:384px;
-    height:536px;
-    top:0px;
-    right:0px;
-    background-image: url("/images/login/splashing_mask_5.png");    
-    background-repeat: no-repeat;
-    transform: scale(0.6);
-    transform-origin: top right;
-`;
 const PrimaryButton = styled(Button)`
     background: transparent;
     & > span {

@@ -2,19 +2,30 @@ import styled from "styled-components";
 import styles from "./LoginStarJellyfish.less";
 import { Carousel,Flex, Form, Input, Button, Divider } from 'antd';
 import {useIntl,Icon} from 'umi';
-import { CopyRight } from "./LoginElements";
+import { CopyRight, LoginLazyBox, SpinBox, useLazyImages } from "./LoginElements";
 
 const LoginStarJellyfish=(props:LoginBoxProps)=>{
     const intl = useIntl()    
     const onFinishHandler=(values:any)=>{
         props.onLogin!(values)        
     }
-    
+
+    const {loading:adLoading} = useLazyImages(["/images/login/star_jellyfish_frame_1.png","/images/login/star_jellyfish_frame_2.png","/images/login/star_jellyfish_frame_3.png"])    
+    const {loading:leftMaskLoading} = useLazyImages(["/images/login/splashing_mask_8.png","/images/login/splashing_mask_11.png","/images/login/star_jellyfish_mask_2.png"])
 
     let panel = (                
                 <>
                 <MaskBox>
-                    <FormBackgroundBox />
+                    <LoginLazyBox backimgUrl="/images/login/star_jellyfish_mask_1.png" style={{
+                        left:"0px",
+                        top:"0px",
+                        right:"0px",
+                        bottom: "0px",
+                        overflow: "hidden",
+                        position: "absolute",        
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center center"
+                    }} />
                 </MaskBox>
                 <div className={styles.loginNormalBox}>
                 <div className={styles.loginNormalTitle}>
@@ -71,19 +82,26 @@ const LoginStarJellyfish=(props:LoginBoxProps)=>{
         panel = (              
                 <>
                 <MaskBox>
-                <BodyBackground>
-                   
-                </BodyBackground>
+                <LoginLazyBox backimgUrl="/images/skins/star-jellyfish-bg.jpg" style={{
+                    left:"0px",
+                    top:"0px",
+                    right:"0px",
+                    bottom: "0px",
+                    overflow: "hidden",
+                    position: "absolute",        
+                    backgroundRepeat: "no-repeat"
+                }} />
                 </MaskBox>
                 <div className={styles.loginCardBox}>
                 
                 <div className={styles.formCardBox}>
                     <div className={styles.formLeft}>
-                        <Carousel fade={true} effect="fade" dotPosition="bottom" autoplay={true}>
+                        {adLoading ? <SpinBox /> :
+                        <Carousel fade={true} effect="fade" dotPosition="bottom" autoplay={true}>                            
                             <img src="/images/login/star_jellyfish_frame_1.png" alt="1" />
                             <img src="/images/login/star_jellyfish_frame_2.png" alt="2" /> 
                             <img src="/images/login/star_jellyfish_frame_3.png" alt="3" /> 
-                        </Carousel>
+                        </Carousel>}
                     </div>
                     <div className={styles.formRight}>    
                         <div className={styles.loginCardTitle}>
@@ -137,22 +155,49 @@ const LoginStarJellyfish=(props:LoginBoxProps)=>{
             </>)
     } else if(props.layoutType=="fullColumn"){
             panel = (<MaskBox> 
-                    <FullLeftRight />  
-                    <FullLayoutBottom>
+                    <LoginLazyBox backimgUrl="/images/login/star_jellyfish_mask_3.png" style={{
+                        position:"absolute",
+                        width:"50%",
+                        height:"364px",
+                        left:"0px",
+                        bottom: "0px",
+                        overflow: "hidden",       
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "bottom right",
+                        transform: "scale(0.9)",
+                        transformOrigin: "bottom right"
+                    }} />
+                    <LoginLazyBox backimgUrl="/images/login/splashing_mask_10.png" style={{
+                        position:"absolute",
+                        width:"50%",
+                        height:"380px",
+                        textAlign:"right",
+                        left:"0px",
+                        bottom: "0px",
+                        overflow: "hidden",       
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "bottom right",
+                        transform: "scale(0.9)",
+                        transformOrigin: "bottom center"
+                    }}>
                         <label style={{fontSize:"60px",color:"#76b5f3"}}>Rich layout styles</label><br />
                         <label style={{fontSize:"36px",color:"#f6cfef",opacity:"0.7",lineHeight:"40px"}}>Multi tenant</label><br />
                         <label style={{fontSize:"36px",color:"#f6cfef",opacity:"0.7",lineHeight:"40px"}}>SpringCloud + React</label><br />
-                    </FullLayoutBottom>                      
+                    </LoginLazyBox>                      
                     <>
-                    <div className={styles.fullBox}>
-                        <div className={styles.fullLeft}>                        
-                            <div style={{padding:"40px"}}>
-                                <label style={{fontSize:"96px",lineHeight:"100px"}}>320+</label><br />
-                                <label style={{fontSize:"24px",opacity:"0.7"}}>Colorful theme styles</label><br />
-                                <img style={{display:"inline-block",marginTop:"20px",marginRight:"20px"}} src="/images/login/splashing_mask_8.png" alt="warden theme" />
-                                <img style={{display:"inline-block",marginTop:"20px",opacity:"0.4"}} src="/images/login/splashing_mask_11.png" alt="warden charts" />
-                            </div>                        
+                    <div className={styles.fullBox}>                        
+                        <div className={styles.fullLeft}>
+                            {leftMaskLoading ? <></> :
+                            <div className={styles.fullLeftBox}>
+                                <div style={{padding:"40px"}}>
+                                    <label style={{fontSize:"96px",lineHeight:"100px"}}>320+</label><br />
+                                    <label style={{fontSize:"24px",opacity:"0.7"}}>Colorful theme styles</label><br />
+                                    <img style={{display:"inline-block",marginTop:"20px",marginRight:"20px"}} src="/images/login/splashing_mask_8.png" alt="warden theme" />
+                                    <img style={{display:"inline-block",marginTop:"20px",opacity:"0.4"}} src="/images/login/splashing_mask_11.png" alt="warden charts" />
+                                </div> 
+                            </div>}
                         </div>
+                        
                         <div className={styles.fullRight}>
                             <div className={styles.loginFullTitle}>
                                 <img src="/images/login/splashing_logo.png" style={{width:"100px",height:"100px"}} alt="logo" />
@@ -231,62 +276,7 @@ const MaskBox=styled.div`
     overflow: hidden;
     position: absolute;    
 `;
-const BodyBackground=styled.div`
-    left:0px;
-    top:0px;
-    right:0px;
-    bottom: 0px;
-    overflow: hidden;
-    position: absolute;     
-    background-image: url("/images/skins/star-jellyfish-bg.jpg");      
-    background-repeat: no-repeat;   
-`;
-const FormBackgroundBox=styled.div`
-    left:0px;
-    top:0px;
-    right:0px;
-    bottom: 0px;
-    overflow: hidden;
-    position: absolute;     
-    background-image: url("/images/login/star_jellyfish_mask_1.png");      
-    background-repeat: no-repeat; 
-    background-position: center center;  
-`;
-const BodyBlurBox=styled.div`
-    width:100%;
-    height:100%;
-    background:rgba(0, 0, 0, 0.6);    
-    -webkit-transform: translateZ(0);
-    -webkit-backdrop-filter: blur(8px);
-    transform: translateZ(0);
-    backdrop-filter: blur(8px);  
-`
-const FullLayoutBottom=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:380px; 
-    text-align:right;  
-    left:0px;
-    bottom:0px;
-    background-image: url("/images/login/splashing_mask_10.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.9);
-    transform-origin: bottom center;
-`;
 
-const FullLeftRight=styled.div`  
-    position:absolute;  
-    width:50%;
-    height:364px;   
-    left:0px;
-    bottom:0px;
-    background-image: url("/images/login/star_jellyfish_mask_3.png");    
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    transform: scale(0.9);
-    transform-origin: bottom right;
-`;
 const PrimaryButton = styled(Button)`
     background: transparent;
     & > span {

@@ -2,10 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { ConfigProvider, App, Space, theme,message } from 'antd';
 import {useIntl,history} from 'umi';
 import LoginBlueSky from '@/components/login/LoginBlueSky';
-import { LoginSettingDrawer } from '@/components/login/LoginElements';
 import { LoginContext } from '@/components/login/LoginContext';
-
-import { getSkin } from '@/utils/skinUtil';
 import LoginSplashing from '@/components/login/LoginSplashing';
 import LoginBlueChristams from '@/components/login/LoginBlueChristams';
 import LoginBlueLattice from '@/components/login/LoginBlueLattice';
@@ -15,6 +12,7 @@ import LoginOrangeBubble from '@/components/login/LoginOrangeBubble';
 import LoginStarJellyfish from '@/components/login/LoginStarJellyfish';
 import LoginStarNeon from '@/components/login/LoginStarNeon';
 import LoginNormal from '@/components/login/LoginNormal';
+import LoginSettingDrawer from '@/components/login/LoginSettingDrawer';
 
 
 /**
@@ -24,13 +22,25 @@ import LoginNormal from '@/components/login/LoginNormal';
 const LoginPage = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [imgUrl,setImgUrl] = useState<string>('')
-  const [loginConfig,setLoginConfig] = useState<LoginConfig>({layoutType:"cardColumn",primaryColor:"#358cf1",theme:"light",skinName:"blueSky"})
+
+  let defaultLoginConfig:LoginConfig = {layoutType:"cardColumn",primaryColor:"#358cf1",theme:"light",skinName:"blueSky"}
+  const loginConfigState = localStorage.getItem("loginConfig")
+  if(loginConfigState){
+    defaultLoginConfig = JSON.parse(loginConfigState) as LoginConfig
+  }
+  
+
+  const [loginConfig,setLoginConfig] = useState<LoginConfig>(defaultLoginConfig)
   const [loading,setLoading] = useState<boolean>(false)
   const msgKey = 'loginMsg';
   const intl = useIntl()
   useEffect(()=>{               
         refreshCaptcha()
   },[])
+
+  useEffect(()=>{
+    localStorage.setItem("loginConfig",JSON.stringify(loginConfig))
+  },[loginConfig])
 
   // 刷新验证码
   const refreshCaptcha=() => {
@@ -126,7 +136,7 @@ const LoginPage = () => {
     default:
       break;
   }
-
+  
   return (
     <ConfigProvider theme={{
       token:{colorPrimary:loginConfig.primaryColor},      
