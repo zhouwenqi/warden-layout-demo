@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
-import { Avatar, List, Space,App,theme} from 'antd';
-import { Container, hexToRgbaString,useConfigContext } from 'warden-layout';
+import { Avatar, List, Space,App} from 'antd';
+import { Container} from 'warden-layout';
 import {useIntl} from 'umi';
-
-const {useToken} = theme
 
 const data = Array.from({ length: 23 }).map((_, i) => ({
   href: 'https://microwarp.com',
@@ -26,6 +24,7 @@ const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
 const ContainerPage=() => {
     const staticApp = App.useApp()
     const intl = useIntl()
+    
     useEffect(()=>{
         showNotification()
     },[])
@@ -40,7 +39,6 @@ const ContainerPage=() => {
     return(
         <Container mode="panel">
             <List
-                itemLayout="vertical"
                 size="large"
                 pagination={{
                 onChange: (page) => {

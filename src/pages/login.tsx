@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { ConfigProvider, App, Space, theme,message } from 'antd';
 import {useIntl,history} from 'umi';
 import LoginBlueSky from '@/components/login/LoginBlueSky';
-import { LoginContext } from '@/components/login/LoginContext';
+import { LoginContext, useLoginContext } from '@/components/login/LoginContext';
 import LoginSplashing from '@/components/login/LoginSplashing';
 import LoginBlueChristams from '@/components/login/LoginBlueChristams';
 import LoginBlueLattice from '@/components/login/LoginBlueLattice';
@@ -13,6 +13,7 @@ import LoginStarJellyfish from '@/components/login/LoginStarJellyfish';
 import LoginStarNeon from '@/components/login/LoginStarNeon';
 import LoginNormal from '@/components/login/LoginNormal';
 import LoginSettingDrawer from '@/components/login/LoginSettingDrawer';
+import LoginProvider from '@/components/login/LoginProvider';
 
 
 /**
@@ -23,24 +24,15 @@ const LoginPage = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [imgUrl,setImgUrl] = useState<string>('')
 
-  let defaultLoginConfig:LoginConfig = {layoutType:"cardColumn",primaryColor:"#358cf1",theme:"light",skinName:"blueSky"}
-  const loginConfigState = localStorage.getItem("loginConfig")
-  if(loginConfigState){
-    defaultLoginConfig = JSON.parse(loginConfigState) as LoginConfig
-  }
-  
-
-  const [loginConfig,setLoginConfig] = useState<LoginConfig>(defaultLoginConfig)
+  const {loginConfig} = useLoginContext()
   const [loading,setLoading] = useState<boolean>(false)
   const msgKey = 'loginMsg';
   const intl = useIntl()
   useEffect(()=>{               
-        refreshCaptcha()
+    refreshCaptcha()
   },[])
 
-  useEffect(()=>{
-    localStorage.setItem("loginConfig",JSON.stringify(loginConfig))
-  },[loginConfig])
+  console.log(loginConfig)
 
   // 刷新验证码
   const refreshCaptcha=() => {
@@ -90,8 +82,6 @@ const LoginPage = () => {
     history.push("/main")
   }
 
-  let algorithm = loginConfig.theme == "dark" ? [theme.darkAlgorithm] : [theme.defaultAlgorithm]
-
   // 模拟堵塞登录
   async function asyncDelayedFunction() {
     console.log("Waiting for 5 seconds...");
@@ -136,23 +126,24 @@ const LoginPage = () => {
     default:
       break;
   }
+
+  console.log(loginConfig)
   
   return (
-    <ConfigProvider theme={{
-      token:{colorPrimary:loginConfig.primaryColor},      
-      algorithm:algorithm}}
-      >
-        <App>
-          <LoginContext.Provider value={{loginConfig,setLoginConfig}}>
-            <>
-            {contextHolder}            
-            <LoginSettingDrawer onMorePress={()=>{gotoMainRoute()}} />
-            {panel}
-            </>
-          </LoginContext.Provider>
-        </App>
-    </ConfigProvider>
+    <>     
+      {contextHolder}            
+      <LoginSettingDrawer onMorePress={()=>{gotoMainRoute()}} />
+      {panel} 
+    </>    
   );
 };
 
-export default LoginPage;
+const LoginProviderPage=()=>{
+  return(
+    <LoginProvider>
+      <LoginPage />
+    </LoginProvider>
+  )
+}
+
+export default LoginProviderPage;

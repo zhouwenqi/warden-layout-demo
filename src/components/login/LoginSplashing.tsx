@@ -14,36 +14,9 @@ const LoginSplashing=(props:LoginBoxProps)=>{
     const {loading:leftMaskLoading} = useLazyImages(["/images/login/splashing_mask_8.png","/images/login/splashing_mask_11.png","/images/login/splashing_mask_12.png"])
 
     let panel = (<MaskBox>
-                <LoginLazyBox backimgUrl="/images/login/splashing_mask_3.png" style={{
-                    position:"absolute",
-                    width:"160px",
-                    height:"465px",
-                    top:"0px",
-                    left:"0px",
-                    backgroundRepeat: "no-repeat",
-                    transform: "scale(0.6)",
-                    transformOrigin: "top left"
-                }} />
-                <LoginLazyBox backimgUrl="/images/login/splashing_mask_4.png" style={{
-                    position:"absolute",
-                    width:"736px",
-                    height:"156px",
-                    bottom:"0px",
-                    left:"0px",
-                    backgroundRepeat: "no-repeat",
-                    transform: "scale(0.6)",
-                    transformOrigin: "bottom left"
-                }} />
-                <LoginLazyBox backimgUrl="/images/login/splashing_mask_5.png" style={{
-                    position:"absolute",
-                    width:"384px",
-                    height:"536px",
-                    top:"0px",
-                    right:"0px",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "top right",
-                    transform: "scale(0.6)",
-                }} />
+                <MaskTopLeft />
+                <MaskBottomLeft />
+                <MaskTopRight />
                 <>
                 <div className={styles.loginBox}>
                 <div className={styles.loginNormalTitle}>
@@ -97,38 +70,9 @@ const LoginSplashing=(props:LoginBoxProps)=>{
     
     if(props.layoutType=="cardColumn"){
         panel = (<MaskBox>
-                <LoginLazyBox backimgUrl="/images/login/splashing_mask_3.png" style={{
-                    position:"absolute",
-                    width:"160px",
-                    height:"465px",
-                    top:"0px",
-                    left:"0px",
-                    backgroundRepeat: "no-repeat",
-                    transform: "scale(0.6)",
-                    transformOrigin: "top left"
-                }} />
-                <LoginLazyBox backimgUrl="/images/login/splashing_mask_4.png" style={{
-                    position:"absolute",
-                    width:"736px",
-                    height:"156px",
-                    bottom:"0px",
-                    left:"0px",
-                    backgroundRepeat: "no-repeat",
-                    transform: "scale(0.6)",
-                    transformOrigin: "bottom left"
-                }} />
-                <LoginLazyBox backimgUrl="/images/login/splashing_mask_5.png" style={{
-                    position:"absolute",
-                    width:"384px",
-                    height:"536px",
-                    top:"0px",
-                    right:"0px",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "top right",
-                    transform: "scale(0.6)",
-                    transformOrigin: "top right"
-
-                }} />               
+                <MaskTopLeft />
+                <MaskBottomLeft />
+                <MaskTopRight />              
                 <>
                 <div className={styles.loginBox}>
                 <div className={styles.loginCardTitle}>
@@ -193,17 +137,7 @@ const LoginSplashing=(props:LoginBoxProps)=>{
         </MaskBox>)
     }else if(props.layoutType=="fullColumn"){
         panel = (<MaskBox> 
-                <LoginLazyBox backimgUrl="/images/login/splashing_mask_5.png" style={{
-                    position:"absolute",
-                    width:"384px",
-                    height:"536px",
-                    top:"0px",
-                    right:"0px",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "top right",
-                    transform: "scale(0.6)",
-                    transformOrigin: "top right"
-                }} />               
+                <MaskTopRight />               
                 <LoginLazyBox backimgUrl="/images/login/splashing_mask_7.png" style={{
                     position:"absolute",
                     width:"50%",
@@ -293,8 +227,7 @@ const LoginSplashing=(props:LoginBoxProps)=>{
                                 <Form.Item>
                                     <PrimaryButton type="primary" loading={props.loading} block htmlType="submit">
                                     {intl.formatMessage({id:"pages.login.button.login"})}
-                                    </PrimaryButton>
-                                    
+                                    </PrimaryButton>                                    
                                     <Divider plain>{intl.formatMessage({id:"app.global.or"})}</Divider>
                                     <Button block onClick={props.onRegister} disabled={props.loading}>
                                     {intl.formatMessage({id:"pages.login.button.register"})}
@@ -316,6 +249,51 @@ const LoginSplashing=(props:LoginBoxProps)=>{
     )
 }
 
+const MaskTopLeft=()=>{
+    return(
+        <LoginLazyBox backimgUrl="/images/login/splashing_mask_3.png" style={{
+            position:"absolute",
+            width:"160px",
+            height:"465px",
+            top:"0px",
+            left:"0px",
+            backgroundRepeat: "no-repeat",
+            transform: "scale(0.6)",
+            transformOrigin: "top left"
+        }} />
+    )
+}
+
+const MaskBottomLeft=()=>{
+    return(
+        <LoginLazyBox backimgUrl="/images/login/splashing_mask_4.png" style={{
+            position:"absolute",
+            width:"736px",
+            height:"156px",
+            bottom:"0px",
+            left:"0px",
+            backgroundRepeat: "no-repeat",
+            transform: "scale(0.6)",
+            transformOrigin: "bottom left"
+        }} />
+    )
+}
+
+const MaskTopRight=()=>{
+    return(
+        <LoginLazyBox backimgUrl="/images/login/splashing_mask_5.png" style={{
+            position:"absolute",
+            width:"384px",
+            height:"536px",
+            top:"0px",
+            right:"0px",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top right",
+            transform: "scale(0.6)",
+            transformOrigin: "top right"
+        }} />
+    )
+}
 
 const BodyBox=styled.div`
     display: flex;

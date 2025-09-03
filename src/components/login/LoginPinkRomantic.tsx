@@ -12,7 +12,7 @@ const LoginPinkRomantic=(props:LoginBoxProps)=>{
 
     const {loading} = useLazyImages(["/images/login/pink_romantic_frame_1.png","/images/login/pink_romantic_frame_2.png","/images/login/pink_romantic_frame_3.png"])
 
-    let panel = (<LoginLazyBox backimgUrl="/images/login/pink_romantic_mask_1.png" style={{
+    let panel = (<><LoginLazyBox backimgUrl="/images/login/pink_romantic_mask_1.png" style={{
                     left:"0px",
                     top:"0px",
                     right:"0px",
@@ -22,8 +22,8 @@ const LoginPinkRomantic=(props:LoginBoxProps)=>{
                     backgroundPosition:"center center",
                     backgroundRepeat:"no-repeat",
                     backgroundSize:"600px",
-                }}>
-                <>
+                }} />
+                
                 <div className={styles.loginBox}>
                 <div className={styles.loginNormalTitle}>
                     <img src="/images/login/pink_romantic_logo.png" style={{width:"100px",height:"100px"}} alt="logo" />
@@ -71,8 +71,7 @@ const LoginPinkRomantic=(props:LoginBoxProps)=>{
                 </div>
                 <CopyRight />
             </div>
-            </>
-        </LoginLazyBox>)
+            </>)
     
     if(props.layoutType=="cardColumn"){
         panel = (<MaskBox>               

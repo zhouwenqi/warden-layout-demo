@@ -3,7 +3,8 @@ import React, { useContext } from "react";
 
 interface LoginContextDispatcher {
     loginConfig:LoginConfig,
-    setLoginConfig:(config:LoginConfig)=>void
+    setLoginConfig:(config:LoginConfig)=>void,
+    
 }
 const LoginContext = React.createContext<LoginContextDispatcher>({
     loginConfig:{
